@@ -1,0 +1,6 @@
+App DB Account
+---------------
+DB  : apps_archive
+User: apps_archive
+Pass: jR5hw5tUbHfrzF2A
+

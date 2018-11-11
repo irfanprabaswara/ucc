@@ -1,0 +1,38 @@
+.sharing-button {	
+	padding: 3px;
+	font-size: 25px;
+	box-shadow: 0 1px 3px 0 rgba(0,0,0,.16),0 1px 2px 0 rgba(0,0,0,.23);
+	-webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,.16),0 1px 2px 0 rgba(0,0,0,.23);
+	border-radius: 2px;	
+	height: auto;
+	text-align: center;
+	width: 45px;
+	margin: 0px 5px 10px 5px;
+}
+
+.bg-facebook {
+	color: #4A76D2;
+}
+
+
+.bg-twitter {
+	color: #4A76D2;
+}
+
+.bg-linkedin {
+	color: #4A76D2;
+}
+
+.bg-google-plus {
+	color: #4A76D2;
+}
+
+.bg-whatsapp {
+	color: #4A76D2;
+}
+
+.sharing-widget {
+	display: inline-block;
+	vertical-align: middle;
+	list-style: none;
+}

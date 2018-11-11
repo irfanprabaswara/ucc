@@ -1,0 +1,40 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::prefix('kuisioner')->group(function () {
+    Route::get('/{informan?}', 'FrontKuisionerController@getKuisioner')->name('kuisioner');
+	Route::post('/', 'FrontKuisionerController@submitKuisioner');
+});
+
+Route::get('/', 'FrontPostingController@getIndex');
+Route::get('/responses', 'FrontResponsesController@getResponses');
+Route::get('/search', 'FrontPostingController@getSearch');
+Route::get('/contact', 'FrontContactController@getContact');
+Route::get('/about', 'FrontAboutController@getAbout');
+Route::get('/gallery', 'FrontGalleryController@getIndex');
+Route::get('/missing', 'MissingHandlerController@getIndex');
+Route::get('/events/{filter?}', 'FrontEventsController@getEvents');
+Route::get('/news/{category?}/{slug?}', 'FrontPostingController@getPost');
+
+Route::get('pengelola/export/{type?}', 'BackgroundExportController@export');
+Route::get('pengelola/toggle_show/', 'BackgroundToggleShowRespon@toggleShowRespon');
+
+Route::post('/contact', 'FrontContactController@submitContact');
+
+
+Route::get('/home_user', 'User@index');
+Route::get('/login', 'User@login');
+Route::post('/loginPost', 'User@loginPost');
+Route::get('/register', 'User@register');
+Route::post('/registerPost', 'User@registerPost');
+Route::get('/logout', 'User@logout');
