@@ -1,72 +1,57 @@
 @extends('layouts.templateMahasiswa')
 
+@section('header')
+        <!-- ******HEADER****** -->
+        <header class="header">
+            <div class="top-bar">
+                <div class="container">
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- Authentication Links -->
+                        @if (Auth::guest())
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
+            </div><!--//to-bar-->
+            <div class="header-main container">
+                <h1 class="logo col-md-4 col-sm-4">
+                    <a href="{{url('/')}}"><img style="height: 60px;" id="logo" src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                </h1><!--//logo-->
+                <div class="info col-md-8 col-sm-8">
+                    <div class="contact pull-right">
+                    </div><!--//contact-->
+                </div><!--//info-->
+            </div><!--//header-main-->
+        </header><!--//header-->
+@endsection
+
+@section('nav')
+    @parent
+@endsection
+
 @section('content')
-<div class="container">
-    <!-- FIRST ROW OF BLOCKS -->     
-      <div class="row">
-
-      <!-- USER PROFILE BLOCK -->
-        <div class="col-sm-3 col-lg-3">
-            <div class="dash-unit">
-                <dtitle>User Profile</dtitle>
-                <hr>
-                <div class="thumbnail">
-                    <img src="images/face80x80.jpg" alt="{{ Auth::user()->name }}" class="img-circle">
-                </div><!-- /thumbnail -->
-                <h1>Marcel Newman</h1>
-                <h3>Madrid, Spain</h3>
-                <br>
-                    <div class="info-user">
-                        <span aria-hidden="true" class="li_user fs1"></span>
-                        <span aria-hidden="true" class="li_settings fs1"></span>
-                        <span aria-hidden="true" class="li_mail fs1"></span>
-                        <span aria-hidden="true" class="li_key fs1"></span>
-                    </div>
-                </div>
-        </div>
-
-      <!-- DONUT CHART BLOCK -->
-        <div class="col-sm-3 col-lg-3">
-            <div class="dash-unit">
-                <dtitle>Site Bandwidth</dtitle>
-                <hr>
-                <div id="load"></div>
-                <h2>45%</h2>
-            </div>
-        </div>
-
-      <!-- DONUT CHART BLOCK -->
-        <div class="col-sm-3 col-lg-3">
-            <div class="dash-unit">
-                <dtitle>Disk Space</dtitle>
-                <hr>
-                <div id="space"></div>
-                <h2>65%</h2>
-            </div>
-        </div>
-        
-        <div class="col-sm-3 col-lg-3">
-
-      <!-- LOCAL TIME BLOCK -->
-            <div class="half-unit">
-                <dtitle>Local Time</dtitle>
-                <hr>
-                    <div class="clockcenter">
-                        <digiclock>12:45:25</digiclock>
-                    </div>
-            </div>
-
-      <!-- SERVER UPTIME -->
-            <div class="half-unit">
-                <dtitle>Server Uptime</dtitle>
-                <hr>
-                <div class="cont">
-                    <p><img src="images/up.png" alt=""> <bold>Up</bold> | 356ms.</p>
-                </div>
-            </div>
-
-        </div>
-      </div><!-- /row -->
+    <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
@@ -78,5 +63,5 @@
                     </div>
                 </div>
             </div>
-</div>
+    </div>
 @endsection

@@ -31,57 +31,101 @@
     <!-- <![endif] -->
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+    @if($active == "home")
+<body class="home-page">
+@else
+<body>
+@endif
+    <div class="wrapper">
+        @section('header')
+        <!-- ******HEADER****** -->
+        <header class="header">
+            <div class="top-bar">
+                <div class="container">
+                    <ul class="social-icons col-md-6 col-sm-6 col-xs-12 hidden-xs">
+                        
+                    </ul><!--//social-icons-->
+                    <form method="get" action="{{url('search/')}}" class="pull-right search-form" role="search">
+                        <div class="form-group">
+                            <input type="text" name='q' class="form-control" placeholder="Search the site news...">
+                        </div>
+                        <button type="submit" class="btn btn-theme">Go</button>
+                    </form>
+                </div>
+            </div><!--//to-bar-->
+            <div class="header-main container">
+                <h1 class="logo col-md-4 col-sm-4">
+                    <a href="{{url('/')}}"><img style="height: 60px;" id="logo" src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                </h1><!--//logo-->
+                <div class="info col-md-8 col-sm-8">
+                    <div class="contact pull-right">
+                    </div><!--//contact-->
+                </div><!--//info-->
+            </div><!--//header-main-->
+        </header><!--//header-->
+        @show
+
+        @section('nav')
+        <!-- ******NAV****** -->
+        <nav class="main-nav" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->
+                <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                         document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-
+                        <li id="Profil" class="nav-item"><a href="{{url('profile/')}}">Profil Saya</a></li>
+                        <li id="listIsiSurvey" class="nav-item"><a href="{{url('listIsiSurvey/')}}">Daftar Isi Survey</a></li>
+                        <li id="listHasilSurvey" class="nav-item"><a href="{{url('listHasilSurvey/')}}">Daftar Hasil Survey</a></li>
+                        @if($isShow->is_show)
+                          <li id="responses" class="nav-item"><a href="{{url('responses/')}}">Responses</a></li>
                         @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </div><!--//container-->
+        </nav><!--//main-nav-->
+        @show
 
         @yield('content')
-    </div>
 
+    </div><!--//wrapper-->
+
+    <!-- *****CONFIGURE STYLE****** -->
+    <?php /*<div class="config-wrapper hidden-xs">
+        <div class="config-wrapper-inner">
+            <a id="config-trigger" class="config-trigger" href="#"><i class="fa fa-cog"></i></a>
+            <div id="config-panel" class="config-panel">
+                <p>Choose Colour</p>
+                <ul id="color-options" class="list-unstyled list-inline">
+                    <li class="default active" ><a data-style="{{asset('css/styles.css')}}" data-logo="{{asset('images/logo.png')}}" href="#"></a></li>
+                    <li class="green"><a data-style="{{asset('css/styles-green.css')}}" data-logo="{{asset('images/logo.png')}}" href="#"></a></li>
+                    <li class="purple"><a data-style="{{asset('css/styles-purple.css')}}" data-logo="{{asset('images/logo.png')}}" href="#"></a></li>
+                    <li class="red"><a data-style="{{asset('css/styles-red.css')}}" data-logo="{{asset('images/logo.png')}}" href="#"></a></li>
+                </ul><!--//color-options-->
+                <a id="config-close" class="close" href="#"><i class="fa fa-times-circle"></i></a>
+            </div><!--//configure-panel-->
+        </div><!--//config-wrapper-inner-->
+    </div>*/ ?><!--//config-wrapper-->
+    <!-- Javascript -->
+    <script type="text/javascript" src="{{asset('plugins/jquery-1.12.3.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/bootstrap-hover-dropdown.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/back-to-top.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/jquery-placeholder/jquery.placeholder.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/pretty-photo/js/jquery.prettyPhoto.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('plugins/jflickrfeed/jflickrfeed.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#{{$active}}").addClass( "active" );
+        });
+    </script>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
