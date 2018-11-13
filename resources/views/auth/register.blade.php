@@ -10,6 +10,25 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
+                        <div class="form-group{{ $errors->has('registras') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Register as</label>
+
+                            <div>
+                                <label>
+                                <input  type="radio"  name="registeras" value="company" required autofocus> Company
+                                </label>
+                                <label>
+                                <input  type="radio"  name="registeras" value="student" required autofocus checked> Student
+                                </label>
+
+                                @if ($errors->has('registeras'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('registeras') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
