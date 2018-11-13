@@ -2,26 +2,33 @@
 <html lang="{{ app()->getLocale() }}">
 
 <head>
-    <!-- <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        {{--CSRF Token--}}
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        {{--Title and Meta--}}
-        @meta
-
-        {{--Common App Styles--}}
-        <link href="{{ asset('css/app.css')}}" rel="stylesheet" id="bootstrap-css">
-        
-
-        {{--Styles--}}
-        @yield('styles')
-
-        {{--Head--}}
-    @yield('head') -->
-
+    <title>{{ $title }}</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ $meta['description'] }}">
+    <meta name="author" content="{{ $meta['author'] }}">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/font-awesome/css/icomoon.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/flexslider/flexslider.css')}}">
+    <link rel="stylesheet" href="{{asset('plugins/pretty-photo/css/prettyPhoto.css')}}">
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{{asset('css/styles.css')}}">
+    <link id="theme-style" rel="stylesheet" href="{{asset('css/custom-style.css')}}">
+    @if($active == 'kuisioner')
+    <link rel="stylesheet" type="text/css" href="{{asset('css/style-form.css')}}">
+    @endif
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- [if lt IE 9]> -->
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <!-- <![endif] -->
 </head>
 <body>
     <div id="app">
