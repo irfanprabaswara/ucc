@@ -33,4 +33,7 @@ Route::post('/contact', 'FrontContactController@submitContact');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@getIndex');
+Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey');
+Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey');

@@ -79,7 +79,7 @@
                 </div><!--//navbar-header-->
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li id="Profil" class="nav-item"><a href="{{url('profile/')}}">Profil Saya</a></li>
+                        <li id="home" class="nav-item"><a href="{{url('home/')}}">Home</a></li>
                         <li id="listIsiSurvey" class="nav-item"><a href="{{url('listIsiSurvey/')}}">Daftar Isi Survey</a></li>
                         <li id="listHasilSurvey" class="nav-item"><a href="{{url('listHasilSurvey/')}}">Daftar Hasil Survey</a></li>
                         @if($isShow->is_show)
