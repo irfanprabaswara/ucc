@@ -17,6 +17,7 @@ Route::prefix('kuisioner')->group(function () {
 });
 
 Route::get('/', 'FrontPostingController@getIndex');
+// Route::get('/', 'FrontPostingController@getIndex');
 Route::get('/responses', 'FrontResponsesController@getResponses');
 Route::get('/search', 'FrontPostingController@getSearch');
 Route::get('/contact', 'FrontContactController@getContact');

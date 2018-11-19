@@ -13,6 +13,9 @@ use App\ContactUs;
 use App\Testimonial;
 use App\Link;
 use App\ShowResponses;
+use App\Aspek;
+use Auth;
+use Lava;
 
 class HomeController extends Controller
 {
@@ -68,7 +71,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    private $site_name = "Undip World Class University";
+    private $site_name = "Diponegoro Research Center";
     protected $kontak = array();
 
 
@@ -120,25 +123,92 @@ class HomeController extends Controller
 
     public function listIsiSurvey()
     {
-        $meta['description'] = 'Recent updates on Undip World Class University';
+      $meta['description'] = 'Recent updates on Undip World Class University';
       $meta['author'] = 'Undip World Class University';
       $data['meta'] = $meta;
 
       $data['title'] = $this->site_name;
-        $data['active'] = "listIsiSurvey";
-        
+      $data['active'] = "listIsiSurvey";
+      
+      //mengambil session registeras
+      $registeras = Auth::user()->registeras;
+      // die(printf($registeras));      
+      $tujuan = Aspek::GetAspekByTujuan($registeras);  
       return view('daftarIsiSurvey');
     }
 
     public function listHasilSurvey()
     {
-        $meta['description'] = 'Recent updates on Undip World Class University';
-      $meta['author'] = 'Undip World Class University';
-      $data['meta'] = $meta;
+      // if(!$this->showResponses->is_show)
+      //     return redirect('/');
+        // Meta variable
+        $meta['description'] = 'Whats companys said about Undip World Class University\'s alumni';
+        $meta['author'] = 'Undip World Class University';
+        $data['meta'] = $meta;
 
-      $data['title'] = $this->site_name;
+        $data['title'] = "Show Responses | ". $this->site_name;
         $data['active'] = "listHasilSurvey";
 
-      return view('daftarHasilSurvey');
+      // Chart
+        $aspekList = Aspek::has('pertanyaan.respon_list')->with('pertanyaan.opsi.opsi_list.respon_list_count', 'pertanyaan.jawaban_bebas')->get();
+        $charts = [];
+        $openQuestions = [];
+        $count = [];
+        foreach ($aspekList as $aspek) {
+          foreach ($aspek->pertanyaan as $pertanyaan) {
+            $respon = Lava::DataTable();
+            $respon->addStringColumn('Option');
+            $respon->addNumberColumn('Percent');
+            $count[$pertanyaan->id] = 0;
+            // If Close Question
+            if ($pertanyaan->id_opsi != 0 && !(is_null($pertanyaan->id_opsi))) {
+              $colors = [];
+              $indeks = 0;
+              foreach ($pertanyaan->opsi->opsi_list as $opsi) {
+                if (empty($opsi->respon_list_count->first()->aggregate)) {
+                  $count[$pertanyaan->id] += 0;
+                } else {
+                  $count[$pertanyaan->id] += $opsi->respon_list_count->first()->aggregate;
+                }
+              }
+              foreach ($pertanyaan->opsi->opsi_list as $opsi) {
+                if ($opsi->respon_list_count->isEmpty()) {
+                  $respon->addRow([$opsi->nama_list, 0]);
+                  $colors[$indeks] = ['color' => $opsi->color_opsi_list];
+                } else {
+                  $respon->addRow([$opsi->nama_list, ($opsi->respon_list_count->first()->aggregate/$count[$pertanyaan->id]) * 100]);
+                  $colors[$indeks] = ['color' => $opsi->color_opsi_list];
+                }
+                $indeks++;
+              }
+              Lava::PieChart('chart'.$pertanyaan->id, $respon, [
+                  'title'  => $pertanyaan->pertanyaan,
+                  'is3D'   => true,
+                  'slices' => $colors
+              ]);
+              array_push($charts, 'chart'.$pertanyaan->id);
+            }
+            // Else (Open question)
+            else {
+              $openQuestion['pertanyaan'] = $pertanyaan->pertanyaan;
+              $openQuestion['jawaban'] = [];
+              foreach ($pertanyaan->jawaban_bebas as $jawaban) {
+                array_push($openQuestion['jawaban'], $jawaban->jawaban_bebas);
+              }
+              array_push($openQuestions, $openQuestion);
+            }
+          }
+        }
+
+        $data['charts'] = $charts;
+        $data['openQuestions'] = $openQuestions;
+
+        // Get Contact
+        $data['kontak'] = $this->kontak;
+
+        // Is Show Responses
+        // $data['isShow'] = $this->showResponses;
+
+      return view('daftarHasilSurvey',$data);
     }
 }
