@@ -29,11 +29,12 @@
                     <li data-id='{{$dashboard->id}}' class="{{ (Request::is(config('crudbooster.ADMIN_PATH'))) ? 'active' : '' }}"><a href='{{CRUDBooster::adminPath()}}' class='{{($dashboard->color)?"text-".$dashboard->color:""}}' ><i class='fa fa-dashboard'></i> <span>{{trans("crudbooster.text_dashboard")}}</span> </a></li>
                 @endif
 
-                @foreach(CRUDBooster::sidebarMenu() as $menu)
+                 @foreach(CRUDBooster::sidebarMenu() as $menu)
+                @if(!is_null($menu->children))
                     <li data-id='{{$menu->id}}' class='{{(count($menu->children))?"treeview":""}} {{(CRUDBooster::getCurrentMenuId()==$menu->id && CRUDBooster::getCurrentDashboardId()!=$menu->id )?"active":""}}'><a href='{{ ($menu->is_broken)?"javascript:alert('".trans('crudbooster.controller_route_404')."')":$menu->url."?m=".$menu->id }}' class='{{($menu->color)?"text-".$menu->color:""}}'><i class='{{$menu->icon}} {{($menu->color)?"text-".$menu->color:""}}'></i> <span>{{$menu->name}}</span>
-                            @if(count($menu->children))<i class="fa fa-angle-{{ trans("crudbooster.right") }} pull-{{ trans("crudbooster.right") }}"></i>@endif
+                            @if($menu->children->count())<i class="fa fa-angle-{{ trans("crudbooster.right") }} pull-{{ trans("crudbooster.right") }}"></i>@endif
                         </a>
-                        @if(count($menu->children))
+                        @if($menu->children->count())
                             <ul class="treeview-menu">
                                 @foreach($menu->children as $child)
                                     <li data-id='{{$child->id}}' class='{{(CRUDBooster::getCurrentMenuId()==$child->id && CRUDBooster::getCurrentDashboardId()!=$child->id)?"active":""}}'><a href='{{ ($child->is_broken)?"javascript:alert('".trans('crudbooster.controller_route_404')."')":$child->url."?m=".$child->id }}'><i class='{{$child->icon}}'></i> <span>{{$child->name}}</span></a></li>
@@ -41,6 +42,7 @@
                             </ul>
                         @endif
                     </li>
+                @endif
                 @endforeach
 
 
