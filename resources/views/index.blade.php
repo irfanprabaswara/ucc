@@ -11,8 +11,11 @@
     <div class="row overlapped-navbar-fixed" id="onepage-pertama">
         <div class="col-xs-12 onepage-pertama">
             <br>
-            <h1 class="text-center">Jumbotron</h1>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="col-xs-3 col-xs-offset-2">
+            <h1 class="">Diponegoro <br> Research <br> Center</h1>
+            <i class="text-justify">DIRECT hadir untuk membantu organisasi memenuhi kebutuhannya terkait pengembangan SDM, baik organisasi bisnis, swasta, pendidikan dan pemerintahan. Hasil dari riset ini akan digunakan sebagai dasar dalam penyusunan dan pengembangan program organisasi yang bergerak di sumber daya manusia, sehingga dapat memberikan kontribusi terbaik dalam Pengembangan SDM di Indonesia.</i>
+            </div>
+            <div class="col-xs-6"></div>
         </div>
     </div>   
     </section>

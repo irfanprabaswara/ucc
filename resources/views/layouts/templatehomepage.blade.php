@@ -25,11 +25,16 @@
     <![endif]-->
   </head>
   <body>
+  
 <!-- ===================
         AWAL CONTENT - 
 ======================== -->
     @section('header')    
+    @if($active == "home") 
     <nav class="navbar navbar-light navbar-default navbar-fixed-top custom-navbar" role="navigation">
+    @else 
+    <nav class="navbar navbar-light navbar-default custom-navbar" role="navigation"> 
+    @endif
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -42,6 +47,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    @if($active == "home") 
                     <li>
                         <a class="page-scroll custom-navbar-link" href="#onepage-about" id="nav-about">About Us</a>
                     </li>
@@ -51,6 +57,11 @@
                     <li>
                         <a class="page-scroll custom-navbar-link" href="#template-footer">Contact</a>
                     </li>
+                    @else
+                    <li>
+                        <a class="page-scroll custom-navbar-link" href="{{url('/')}}">Home</a>
+                    </li>
+                    @endif
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle custom-navbar-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                         <ul class="dropdown-menu">
