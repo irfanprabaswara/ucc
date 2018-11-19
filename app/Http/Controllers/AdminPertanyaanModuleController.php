@@ -31,14 +31,14 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Pertanyaan","name"=>"pertanyaan"];
-			$this->col[] = ["label"=>"Aspek","name"=>"id_aspek","join"=>"tbl_aspek,deskripsi"];
+			$this->col[] = ["label"=>"Aspek","name"=>"id_aspek","join"=>"tbl_aspek,topik"];
 			$this->col[] = ["label"=>"Opsi","name"=>"id_opsi","join"=>"tbl_opsi,deskripsi"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Pertanyaan','name'=>'pertanyaan','type'=>'text','validation'=>'required|min:1|max:512','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Aspek','name'=>'id_aspek','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tbl_aspek,deskripsi'];
+			$this->form[] = ['label'=>'Aspek','name'=>'id_aspek','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tbl_aspek,topik'];
 			//$this->form[] = ['label'=>'Jawaban Bebas','name'=>'bebas','type'=>'checkbox','width'=>'col-sm-9','dataenum'=>'Ya'];
 			$this->form[] = ['label'=>'Opsi','name'=>'id_opsi','type'=>'select2','validation'=>'integer|min:0','width'=>'col-sm-10','datatable'=>'tbl_opsi,deskripsi'];
 			# END FORM DO NOT REMOVE THIS LINE

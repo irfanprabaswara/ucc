@@ -47,18 +47,49 @@
 @endsection
 
 @section('nav')
-    @parent
+    <!-- ******NAV****** -->
+        <nav class="main-nav" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button><!--//nav-toggle-->
+                </div><!--//navbar-header-->
+                
+                <div class="navbar-collapse collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li id="home" class="nav-item"><a href="{{url('home/')}}">Home</a></li>
+                        <li id="listIsiSurvey" class="nav-item"><a href="{{url('listIsiSurvey/')}}">Daftar Isi Survey</a></li>
+                        <li id="listHasilSurvey" class="nav-item"><a href="{{url('listHasilSurvey/')}}">Daftar Hasil Survey</a></li>
+                        @if($isShow->is_show)
+                          <li id="responses" class="nav-item"><a href="{{url('responses/')}}">Responses</a></li>
+                        @endif
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </div><!--//container-->
+        </nav><!--//main-nav-->
 @endsection
 
 @section('content')
-    <div class="container">
+    <div class="container-fluid">
+        <div class="col-md-3 col-md-offset-9">
+            <ul class="row-right .pull-right">
+                <!-- Breadcrumb Links -->
+                <ol class="breadcrumb">
+                    <li class="active">Home</li>
+                </ol>
+            </ul>
+        </div>
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12 col-md-offset-0">
+                    
                     <div class="panel panel-default">
                         <div class="panel-heading">Dashboard</div>
 
                         <div class="panel-body">
-                            You are logged in!
                         </div>
                     </div>
                 </div>
