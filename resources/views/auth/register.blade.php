@@ -13,11 +13,11 @@
                         <div class="form-group{{ $errors->has('registras') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Register as</label>
 
-                            <div>
-                                <label>
+                            <div class=" col-md-6 btn-group" data-toggle="buttons">
+                                <label class="btn btn-default">
                                 <input  type="radio"  name="registeras" value="company" required autofocus> Company
                                 </label>
-                                <label>
+                                <label class="btn btn-default active">
                                 <input  type="radio"  name="registeras" value="student" required autofocus checked> Student
                                 </label>
 

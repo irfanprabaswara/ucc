@@ -1,0 +1,37 @@
+.little-extra-space{
+    background-color: #18BC9C;
+}
+
+.layouting-fix{
+    padding-bottom: 40px;
+}
+.template-footer-logo{
+    width: 25%;
+}
+
+.overlapped-navbar-fixed{
+    padding-top: 40px;
+}
+
+.custom-navbar{
+    background-color: white;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.onepage-pertama{
+    background-color: #18BC9C;
+    color:white;
+}
+
+.nav-toggle-color{
+    color: #18BC9C;
+}
+
+.nav-toggle-color:active{
+    color: white;
+}
