@@ -8,14 +8,14 @@
 <div class="container-fluid">
     <div class="page-wrapper">
         <header class="page-heading clearfix">
-            <h1 class="heading-title pull-left">Questionnaire Form</h1>
+            <h1 class="heading-title pull-left">Daftar Survey</h1>
             <!--breadcrumbs-->
             <ol class="breadcrumb pull-right">
               <li><a href="/home">Home</a></li>
               <li class="active">Daftar Isi Survey</li>
             </ol>
             <!--//breadcrumbs-->
-    </header>
+        </header>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
