@@ -132,12 +132,26 @@ class HomeController extends Controller
       
       //mengambil session registeras
       $registeras = Auth::user()->registeras;
-      // die(printf($registeras));      
-      $tujuan = Aspek::GetAspekByTujuan($registeras);  
-      return view('daftarIsiSurvey');
+      $aspekList = Aspek::where('tujuan',$registeras)->get();  
+      return view('daftarIsiSurvey',compact('aspekList'));
     }
 
     public function listHasilSurvey()
+    {
+      $meta['description'] = 'Recent updates on Undip World Class University';
+      $meta['author'] = 'Undip World Class University';
+      $data['meta'] = $meta;
+
+      $data['title'] = $this->site_name;
+      $data['active'] = "listHasilSurvey";
+      
+      //mengambil session registeras
+      $registeras = Auth::user()->registeras;
+      $aspekList = Aspek::where('tujuan','!=',$registeras)->get();  
+      return view('daftarHasilSurvey',compact('aspekList'));
+    }
+
+    public function tampilHasilSurvey()
     {
       // if(!$this->showResponses->is_show)
       //     return redirect('/');
@@ -209,6 +223,6 @@ class HomeController extends Controller
         // Is Show Responses
         // $data['isShow'] = $this->showResponses;
 
-      return view('daftarHasilSurvey',$data);
+      return view('tampilHasilSurvey',$data);
     }
 }
