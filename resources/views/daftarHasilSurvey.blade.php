@@ -1,4 +1,4 @@
-@extends('layouts.templateMahasiswa')
+@extends('home')
 
 @section('nav')
     @parent

@@ -87,10 +87,7 @@
                 <div class="col-md-12 col-md-offset-0">
                     
                     <div class="panel panel-default">
-                        <div class="panel-heading">Dashboard</div>
-
-                        <div class="panel-body">
-                        </div>
+                        <h1><strong><center>SELAMAT DATANG KE DIRECT, {{Auth::user()->name}}</center></strong></h1>
                     </div>
                 </div>
             </div>
