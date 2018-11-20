@@ -16,7 +16,8 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('auth.login');
+        $data['title'] = "Login - Diponegoro Research Center";
+        return view('auth.login', $data);
     }
 
     /**

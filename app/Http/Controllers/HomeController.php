@@ -71,7 +71,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    private $site_name = "Diponegoro Research Center";
+    private $site_name = "Home - Diponegoro Research Center";
     protected $kontak = array();
 
 

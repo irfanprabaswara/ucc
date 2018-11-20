@@ -16,7 +16,7 @@ use App\ShowResponses;
 
 class FrontPostingController extends Controller
 {
-	private $site_name = "Undip World Class University";
+	private $site_name = "DIRECT - Diponegoro Research Center";
     protected $kontak = array();
 
     public function __construct(){
