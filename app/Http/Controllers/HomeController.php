@@ -225,4 +225,32 @@ class HomeController extends Controller
 
       return view('tampilHasilSurvey',$data);
     }
+
+    public function tampilSurvey()
+    {
+      // Meta variable
+        $meta['description'] = 'Undip World Class University';
+        $meta['author'] = 'Undip World Class University';
+        $data['meta'] = $meta;
+
+        $data['title'] = "Questionnaire | ". $this->site_name;
+        $data['active'] = "kuisioner";
+
+        // Get Informan Data
+        if (!is_null($informan)) {
+            $data_informan = Informan::where('url', $informan)->first();
+            $data['informan'] = $data_informan;
+        }
+
+        // Get Kuisioner Questions
+        $kuisioner = Aspek::with('pertanyaan.opsi.opsi_list')->get();
+        $data['kuisioner_list'] = $kuisioner;
+
+        // Get Contact
+        $data['kontak'] = $this->kontak;
+
+        // Is Show Responses
+        $data['isShow'] = $this->showResponses;
+        return view('tampilSurvey', $data);
+    }
 }

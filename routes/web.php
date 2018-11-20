@@ -38,3 +38,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@getIndex');
 Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey');
 Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey');
+Route::get('/tampilHasilSurvey','HomeController@tampilHasilSurvey');
+Route::get('tampilSurvey','HomeController@tampilSurvey');
