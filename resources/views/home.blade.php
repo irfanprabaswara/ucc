@@ -35,9 +35,10 @@
                 </div>
             </div><!--//to-bar-->
             <div class="header-main container">
-                <h1 class="logo col-md-4 col-sm-4">
-                    <a href="{{url('/')}}"><img style="height: 60px;" id="logo" src="{{asset('images/logo.png')}}" alt="Logo"></a>
-                </h1><!--//logo-->
+                <h2 class="logo col-md-8 col-sm-4">
+                    <!-- <a href="{{url('/')}}"><img style="height: 60px;" id="logo" src="{{asset('images/logo.png')}}" alt="Logo"></a> -->
+                    <a href="{{url('home')}}"> <strong style="color:#2669a8"> DIRECT</strong> Diponegoro Research Center</a>
+                </h2><!--//logo-->
                 <div class="info col-md-8 col-sm-8">
                     <div class="contact pull-right">
                     </div><!--//contact-->
