@@ -17,13 +17,16 @@
             <!--//breadcrumbs-->
     </header>
             <div class="row">
-                <div class="col-md-12 col-md-offset-0">
+                <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><CENTER>INI BAGIAN ISI SURVEY</CENTER></div>
+                        @foreach($aspekList as $row)
+                            <div class="panel-heading"><CENTER>{{$row->topik}}</CENTER></div>
 
-                        <div class="panel-body" width="600" height="200">
-                            <!-- <iframe overflow='auto' width='100%' height='600' frameborder='0' src="https://docs.google.com/forms/d/e/1FAIpQLScc9rnVYTh65EGX9WccdR6CXWQFNID4NBlrlxEIQ1_uS8WonA/viewform"></iframe> -->
-                        </div>
+                            <div class="panel-body" width="600" height="200">
+                                {{$row->deskripsi}}<br>
+                                <button class="pull-right">Isi Survey</button>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
