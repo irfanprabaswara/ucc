@@ -6,7 +6,7 @@
 
 @section('content')
 <!-- ******CONTENT****** --> 
-<div class="content container">
+<div class="container-fluid">
     <div class="page-wrapper">
         <header class="page-heading clearfix">
             <h1 class="heading-title pull-left">Daftar Survey</h1>

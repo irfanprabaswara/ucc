@@ -24,7 +24,7 @@
 
                             <div class="panel-body" width="600" height="200">
                                 {{$row->deskripsi}}<br>
-                                <button class="pull-right">Tampil Hasil Survey</button>
+                                <a href="{{url('tampilHasilSurvey')}}" class="btn btn-primary pull-right">Tampil Hasil Survey</a>
                             </div>
                         @endforeach
                     </div>
