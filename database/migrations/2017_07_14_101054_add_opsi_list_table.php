@@ -25,11 +25,11 @@ class AddOpsiListTable extends Migration
             $table->foreign('id_opsi')->references('id')->on('tbl_opsi');
         });
 
-        Schema::table('tbl_pertanyaan', function (Blueprint $table) {
-            $table->foreign('id_opsi')
-            ->references('id')->on('tbl_opsi')
-            ->onDelete('cascade');            
-        });   
+        // Schema::table('tbl_pertanyaan', function (Blueprint $table) {
+        //     $table->foreign('id_opsi')
+        //     ->references('id')->on('tbl_opsi')
+        //     ->onDelete('cascade');            
+        // });   
     }
 
     /**
