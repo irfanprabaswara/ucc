@@ -10,8 +10,8 @@ class OpsiList extends Model
     protected $table = 'tbl_opsi_list';
 
     public function respon_list_count(){
-    	return $this->hasMany('App\ResponList', 'id_opsi')
-    		->select(DB::raw('id_pertanyaan, id_opsi_list, count(id_pertanyaan) as aggregate'))
+    	return $this->hasMany('App\ResponList', 'id_opsi_list')
+    		->select(\DB::raw('id_pertanyaan, id_opsi_list, count(id_pertanyaan) as aggregate'))
     		->groupBy('id_pertanyaan', 'id_opsi_list');
     }    
 }
