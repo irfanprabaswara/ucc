@@ -19,7 +19,7 @@
         </header>
         <div class="page-content">                 
             <div class="row page-row">                     
-                <div class="privacy-wrapper col-md-8 col-sm-7">     
+                <div class="privacy-wrapper col-md-8 col-sm-2">     
                     <div class="page-row">     
                         <div class="panel panel-default">
                             <div class="panel-body">
@@ -124,19 +124,6 @@
                         </div>
                     </div>         
                 </div><!--//privacy-wrapper-->
-                <aside class="page-sidebar  col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1">      
-                    <section class="widget has-divider">
-                        <h3 class="title">Postal Address</h3>
-                        <p class="adr">
-                            <span class="adr-group pull-left">       
-                                <span class="street-address">Gedung PKM Lama Universitas Diponegoro</span><br>
-                                <span class="street-address">Jl. Prof Soedarto, SH</span><br>
-                                <span class="region">Kampus UNDIP Tembalang Semarang</span><br>
-                                <span class="postal-code">50275</span><br>
-                                <span class="country-name">Indonesia</span>
-                            </span>
-                        </p>
-                    </section><!--//widget-->     
                     
                     <section class="widget">
                         @if(!$kontak['phones']->isEmpty() || !$kontak['emails']->isEmpty())
