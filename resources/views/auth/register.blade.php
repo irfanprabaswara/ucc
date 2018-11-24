@@ -14,13 +14,13 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('registras') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Register as</label>
+                            <label for="name" class="col-md-6 control-label">Register as</label>
 
-                            <div class=" col-md-6 btn-group" data-toggle="buttons">
-                                <label class="btn btn-default">
+                            <div class=" col-md-6 btn-group btn-group-toggle" data-toggle="buttons">
+                                <label class="btn btn-secondary">
                                 <input  type="radio"  name="registeras" value="company" required autofocus> Company
                                 </label>
-                                <label class="btn btn-default active">
+                                <label class="btn btn-secondary active">
                                 <input  type="radio"  name="registeras" value="student" required autofocus checked> Student
                                 </label>
 
@@ -33,9 +33,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-6 control-label">Name</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -47,9 +47,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-6 control-label">E-Mail Address</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
@@ -61,9 +61,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-6 control-label">Password</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
                                 @if ($errors->has('password'))
@@ -75,9 +75,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-6 control-label">Confirm Password</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>

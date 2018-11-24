@@ -1,0 +1,158 @@
+/*!
+ * Start Bootstrap - Busines Frontpage (https://startbootstrap.com/template-overviews/business-frontpage)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-business-frontpage/blob/master/LICENSE)
+ */
+*{
+  font-family: 'Rubik', sans-serif;
+} 
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.business-header {
+  height: 50vh;
+  height: auto;
+  min-height: 500px;
+  background: linear-gradient(to right,#0267ff,#56A8FF);
+  /* -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover; */
+
+  padding-bottom: 5%;
+}
+
+.business-header .container .row img{
+  max-width: 75%;
+  height: auto;
+}
+
+.business-header .container .row p{
+  font-style: oblique;
+  margin-top: 5%;
+  color: white;
+}
+
+.card {
+  height: 100%;
+}
+
+.navbar-custom{
+  background-color: white !important;
+}
+
+#navbar-logo{
+  max-height: 30px;
+  width: auto;
+}
+
+.nav-link{
+  color:black !important;
+}
+
+.bg-light{
+  background-color: #c9cdd0 !important;
+}
+
+.bg-super-light{
+  background-color: #f0f1f3;
+}
+
+.footer-logo-container{
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.footer-logo-container img{
+  height: 50px;
+  width: 70px;
+}
+
+.footer-logo-container h3{
+  font-size: 15px;
+}
+
+.footer-logo-container p{
+  font-size: 12px;
+  width: 75%;
+}
+
+.job-title{
+  margin-top:5%;
+  margin-bottom: 2%;
+}
+
+hr.under-job-title{
+  width:70px;
+  border:solid #56A8FF 5px;
+  background-color:#56A8FF;
+}
+
+.card-view{
+  border: solid #f0f1f3 0.5px;
+  border-radius: 7px;
+  margin-bottom: 2%;
+  padding: 3% 7% 5% 8%;
+}
+
+.card-title img{
+  height:90px;
+  width: 120px;
+}
+.card-view h5{
+  font-size: 30px;
+  margin: 0 0 2% 0;
+}
+
+.card-view p{
+  font-size: 15px;
+  width: 50%;
+}
+
+.horizontal-list{
+    list-style-type: none;
+    margin: 0;
+    padding: 10% 30% 0 0;
+    overflow: hidden;
+}
+
+.horizontal-list li{
+  float: right;
+}
+
+.horizontal-list li a {
+    display: block;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    padding: 16px;
+    text-decoration: none;
+}
+
+.horizontal-list div{
+  margin:0;
+  padding-top: 1%;
+}
+
+.horizontal-list li img {
+    /* display: inline-block; */
+    margin-right: 2%;
+    float: right;
+    max-width: 100px;
+    height: auto;
+}
+
+.light-list{
+  font-weight: lighter;
+  color: #a0a0a0 !important;
+  font-size: 10px;
+  margin-left: 4px;
+}
