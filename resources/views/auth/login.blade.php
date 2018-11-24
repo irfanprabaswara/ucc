@@ -82,5 +82,5 @@
     </header>
 @endsection
 
-@section ('footer')
+@section('script')
 @endsection

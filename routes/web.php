@@ -45,3 +45,4 @@ Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey');
 Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey');
 Route::get('tampilHasilSurvey/{id}','HomeController@tampilHasilSurvey');
 Route::get('tampilSurvey/{id}','HomeController@tampilSurvey');
+Route::get('/getmsg','AggrementController@index');

@@ -96,7 +96,7 @@ class FrontPostingController extends Controller
 
       // Link
       $data['link'] = Link::get();
-
+      session()->forget('aggrement');
       return view('index', $data);
     }
 

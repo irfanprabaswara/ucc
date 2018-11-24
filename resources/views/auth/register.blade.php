@@ -79,14 +79,21 @@
 
                             <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input type="text" name="aggrement" value="{{Session::get('aggrement')}}" hidden>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                @if(Session::has('aggrement')) 
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                                @else
+                                <button type="submit" class="btn btn-primary" disabled>
+                                    Register
+                                </button>
+                                @endif
                             </div>
                         </div>
                     </form>
@@ -97,4 +104,49 @@
         </div>
       </div>
     </header>
+    @if(Session::has('aggrement'))
+    @else
+    <!-- modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">You're about to register to DIRECT</h5>
+        </div>
+        <div class="modal-body">
+            <p>Agreement text goes here.</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger decline-aggrement">Decline</button>
+            <button type="button" class="btn btn-success proceed-aggrement">Proceed</button>
+        </div>
+        </div>
+    </div>
+    </div>
+    @endif
+
+@endsection
+
+@section('script')
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+
+    $('.decline-aggrement').click(function(){
+        window.location.href='{{url('/')}}';
+    })
+    $('#myModal').modal({
+        backdrop: 'static',
+        keyboard: false  // to prevent closing with Esc button (if you want this too)
+    })
+
+    //ajax aggrement
+    $('.proceed-aggrement').on('click',function(){
+    $.get('{{url('/getmsg')}}');
+    window.location.href='{{url('/register')}}'; 
+});
+</script>
+
+
 @endsection

@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <meta name="_token" content="{{csrf_token()}}" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">    
     <link rel="icon" type="image/svg+xml" href="{{asset('images/ucc-direct/direct.svg')}}" sizes="192x192">
     <title>{{ $title }}</title>
     <!-- Bootstrap core CSS -->
@@ -114,6 +115,9 @@
     <!-- Bootstrap core JavaScript -->
     <!-- <script type="text/javascript" src="template/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="template/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+
+      @yield('script')
+
     <script type="text/javascript">
       $('#navbar-logo').click(function(){
         window.location.replace('./');
