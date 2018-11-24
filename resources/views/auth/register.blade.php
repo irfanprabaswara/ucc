@@ -143,8 +143,14 @@
 
     //ajax aggrement
     $('.proceed-aggrement').on('click',function(){
-    $.get('{{url('/getmsg')}}');
-    window.location.href='{{url('/register')}}'; 
+        $.ajax({
+                type:'GET',
+                url:'{{url('/getmsg')}}',
+                success:function(data){
+                    window.location.href='{{url('/register')}}'; 
+                }
+            });
+  
 });
 </script>
 
