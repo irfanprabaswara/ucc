@@ -12,7 +12,7 @@
             <!--breadcrumbs-->
             <ol class="breadcrumb pull-right">
               <li><a href="/home">Home</a></li>
-              <li class="active">Daftar Isi Survey</li>
+              <li class="active">Daftar Hasil Survey</li>
             </ol>
             <!--//breadcrumbs-->
         </header>
@@ -24,7 +24,7 @@
 
                             <div class="panel-body" width="600" height="200">
                                 {{$row->deskripsi}}<br>
-                                <a href="{{url('tampilHasilSurvey')}}" class="btn btn-primary pull-right">Tampil Hasil Survey</a>
+                                <a href="{{url('tampilHasilSurvey/'.$row->id)}}" class="btn btn-primary pull-right">Tampil Hasil Survey</a>
                             </div>
                         @endforeach
                     </div>

@@ -11,9 +11,14 @@
 |
 */
 
+// Route::prefix('kuisioner')->group(function () {
+//     Route::get('/{informan?}', 'FrontKuisionerController@getKuisioner')->name('kuisioner');
+// 	Route::post('/', 'FrontKuisionerController@submitKuisioner');
+// });
+
 Route::prefix('kuisioner')->group(function () {
-    Route::get('/{informan?}', 'FrontKuisionerController@getKuisioner')->name('kuisioner');
-	Route::post('/', 'FrontKuisionerController@submitKuisioner');
+    Route::get('/{informan?}', 'HomeController@tampilSurvey')->name('kuisioner');
+	Route::post('/', 'HomeController@submitKuisioner');
 });
 
 Route::get('/', 'FrontPostingController@getIndex');
@@ -38,5 +43,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@getIndex');
 Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey');
 Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey');
-Route::get('tampilHasilSurvey','HomeController@tampilHasilSurvey');
-Route::get('tampilSurvey','HomeController@tampilSurvey');
+Route::get('tampilHasilSurvey/{id}','HomeController@tampilHasilSurvey');
+Route::get('tampilSurvey/{id}','HomeController@tampilSurvey');
