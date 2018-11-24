@@ -17,7 +17,7 @@
 // });
 
 Route::prefix('kuisioner')->group(function () {
-    Route::get('/{informan?}', 'HomeController@tampilSurvey')->name('kuisioner');
+    Route::get('/{informan?}', 'HomeController@tampilSurvey');
 	Route::post('/', 'HomeController@submitKuisioner');
 });
 

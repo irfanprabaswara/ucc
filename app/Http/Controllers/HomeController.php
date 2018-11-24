@@ -125,6 +125,8 @@ class HomeController extends Controller
       return view('home', $data);
     }
 
+    //UNTUK HASIL SURVEY
+
     public function listHasilSurvey()
     {
       $meta['description'] = 'Recent updates on Undip World Class University';
@@ -155,7 +157,6 @@ class HomeController extends Controller
 
       // Chart
         $aspekList = Aspek::where('id','=',$id)->has('pertanyaan.respon_list')->with('pertanyaan.opsi.opsi_list.respon_list_count', 'pertanyaan.jawaban_bebas')->get();
-        echo $aspekList;
         $charts = [];
         $openQuestions = [];
         $count = [];
@@ -218,7 +219,7 @@ class HomeController extends Controller
     }
 
 
-
+    //UNTUK ISIAN SURVEY
 
     public function listIsiSurvey()
     {
@@ -301,7 +302,7 @@ class HomeController extends Controller
             try {
                 $informan->save();
             } catch (QueryException $e) {
-                return redirect('/kuisioner')->withInput()->with('exception', $e->errorInfo[2]);
+                return redirect('/kuisioner')->withInput();
             }
             $informan_id = $request->id;
         }
@@ -320,7 +321,7 @@ class HomeController extends Controller
             try {
                 $informan->save();
             } catch (QueryException $e) {
-                return redirect('/kuisioner')->withInput()->with('exception', $e->errorInfo[2]);
+                return redirect('/kuisioner')->withInput();
             }
             $informan_id = $informan->id;
         }
@@ -331,7 +332,7 @@ class HomeController extends Controller
         try {
             $respon->save();
         } catch (QueryException $e) {
-            return redirect('/kuisioner')->withInput()->with('exception', $e->errorInfo[2]);
+            return redirect('/kuisioner')->withInput();
         }
 
         $respon_id = $respon->id;
@@ -356,7 +357,7 @@ class HomeController extends Controller
                 try {
                     $respon_list->save();
                 } catch (QueryException $e) {
-                    return redirect('/kuisioner')->withInput()->with('exception', $e->errorInfo[2]);
+                    return redirect('/kuisioner')->withInput();
                 }
             }
         }
@@ -367,6 +368,6 @@ class HomeController extends Controller
         $data['isShow'] = $this->showResponses;
 
         $data['sukses'] = "Thank Your for Your Participation.";
-        return view('form', $data);
+        return view('home', $data);
     }
 }
