@@ -346,16 +346,24 @@ class HomeController extends Controller
                 // If Optional answer
                 if ($pertanyaan->id_opsi != 0 && !(is_null($pertanyaan->id_opsi))) {
                     $indeks = 'pertanyaan'.$pertanyaan->id;
-                    $respon_list->id_opsi_list = $request->$indeks;
+                    // dd($indeks);
+                    $respon_list->id_opsi_list = $request->Input($indeks);
+                    // if ($respon_list->id_opsi_list==null) {
+                    //   $respon_list->id_opsi_list="";
+                    // }
                 }
                 // Free answer
                 else{
                     $respon_list->id_opsi_list = 0;
                     $indeks = 'pertanyaan'.$pertanyaan->id;
                     $respon_list->jawaban_bebas = $request->$indeks;
+                    // if ($respon_list->id_opsi_list==null) {
+                    //   $respon_list->id_opsi_list="";
+                    // }
                 }
                 try {
-                    $respon_list->save();
+                    // $respon_list->save();
+                  dd($respon_list);
                 } catch (QueryException $e) {
                     return redirect('/kuisioner')->withInput();
                 }

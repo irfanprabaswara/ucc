@@ -88,7 +88,7 @@
                 <div class="col-md-12 col-md-offset-0">
                     
                     <div class="panel panel-default">
-                        <h1><strong><center>SELAMAT DATANG DI DIRECT, {{Auth::user()->name}}</center></strong></h1>
+                        <h1><strong><center>SELAMAT DATANG DI DIPONEGORO HR RESEARCH CENTER<br><i>{{Auth::user()->name}}</i></center></strong></h1>
                     </div>
                 </div>
             </div>
