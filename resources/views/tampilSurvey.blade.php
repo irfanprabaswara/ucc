@@ -45,7 +45,7 @@
                                 </div>
                             @endif                            
                                 <div class="wrapper">                                    
-                                    <form class="form" method="post" action="{{url('kuisioner')}}">
+                                    <form class="form" method="post" action="{{url('kuisioner/'.$id)}}">
                                         {{ csrf_field() }}
                                         <h2>Your Personal Info</h2>                                        
                                         {{-- {{dd($informan)}} --}}

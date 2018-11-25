@@ -255,17 +255,17 @@ class HomeController extends Controller
         // Get Kuisioner Questions
         $kuisioner = Aspek::with('pertanyaan.opsi.opsi_list')->where('id','=',$id)->get();
         $data['kuisioner_list'] = $kuisioner;
+        $data['id'] = $id;
 
         // Get Contact
         $data['kontak'] = $this->kontak;
 
         // Is Show Responses
         $data['isShow'] = $this->showResponses;
-        dd($kuisioner);
         return view('tampilSurvey', $data);
     }
 
-    public function submitKuisioner(Request $request){
+    public function submitKuisioner(Request $request, $id){
       // Meta variable
         $meta['description'] = 'Kuisioner Tentang Kinerja Alumni Undip pada Dunia Kerja';
         $meta['author'] = 'Undip World Class University';
@@ -275,7 +275,7 @@ class HomeController extends Controller
         $data['active'] = "kuisioner";
 
         // Get Kuisioner Questions
-        $kuisioner = Aspek::with('pertanyaan.opsi.opsi_list')->get();
+        $kuisioner = Aspek::with('pertanyaan.opsi.opsi_list')->where('id','=',$id)->get();
         $data['kuisioner_list'] = $kuisioner;
 
         // Validating Input
@@ -363,8 +363,8 @@ class HomeController extends Controller
                     // }
                 }
                 try {
-                    // $respon_list->save();
-                  dd($respon_list);
+                    $respon_list->save();
+                  // dd($respon_list);
                 } catch (QueryException $e) {
                     return redirect('/kuisioner')->withInput();
                 }

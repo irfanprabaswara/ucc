@@ -18,7 +18,7 @@
 
 Route::prefix('kuisioner')->group(function () {
     Route::get('/{informan?}', 'HomeController@tampilSurvey');
-	Route::post('/', 'HomeController@submitKuisioner');
+	Route::post('/{id}', 'HomeController@submitKuisioner');
 });
 
 Route::get('/', 'FrontPostingController@getIndex');
