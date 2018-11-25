@@ -114,7 +114,7 @@
             <h5 class="modal-title">You're about to register to DIRECT</h5>
         </div>
         <div class="modal-body">
-            <p>Agreement text goes here.</p>
+            <p>By registering here, you agree to all the conditions.</p>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-success proceed-aggrement">Proceed</button>

@@ -79,7 +79,7 @@
         <div class="col-md-3 col-md-offset-9">
             <ul class="row-right .pull-right">
                 <!-- Breadcrumb Links -->
-                <ol class="breadcrumb">
+                <ol class="breadcrumb pull-right">
                     <li class="active">Home</li>
                 </ol>
             </ul>
@@ -89,6 +89,27 @@
                     
                     <div class="panel panel-default">
                         <h1><strong><center>SELAMAT DATANG DI DIPONEGORO HR RESEARCH CENTER<br><i>{{Auth::user()->name}}</i></center></strong></h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="col-md-4 col-md-offset-2">
+                            <div class="panel-heading"><CENTER><h3><strong>DAFTAR ISI SURVEY</strong></h3></CENTER></div>
+
+                                    <div class="panel-body" width="600" height="200">
+                                        <strong>DAFTAR ISI SURVEY</strong> merupakan menu untuk menampilkan daftar survey yang dapat anda isi. Untuk memulainya, anda cukup memilih survey yang ingin anda isi. Untuk memilihnya, anda dapat menekan tombol dibawah ini :<br>
+                                        <a href="{{url('listIsiSurvey')}}" class="btn btn-primary">Tampil Daftar Survey Saya</a>
+                                    </div>
+                        </div>
+
+                        <div class="col-md-4 col-md-offset-0">
+                            <div class="panel-heading"><CENTER><h3><strong>DAFTAR HASIL SURVEY</strong></h3></CENTER></div>
+
+                                    <div class="panel-body" width="600" height="200">
+                                        <strong>DAFTAR HASIL SURVEY</strong> merupakan menu untuk menampilkan daftar hasil survey yang dapat anda lihat. Untuk melihatnya, anda cukup memilih survey yang ingin anda lihat hasilnya. Untuk memilihnya, anda dapat menekan tombol dibawah ini :<br>
+                                        <a href="{{url('listHasilSurvey')}}" class="btn btn-primary">Tampil Daftar Hasil Survey</a>
+                                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
