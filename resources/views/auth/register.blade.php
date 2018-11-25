@@ -117,8 +117,8 @@
             <p>Agreement text goes here.</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger decline-aggrement">Decline</button>
             <button type="button" class="btn btn-success proceed-aggrement">Proceed</button>
+            <button type="button" class="btn btn-danger decline-aggrement">Decline</button>
         </div>
         </div>
     </div>
