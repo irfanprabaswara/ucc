@@ -40,9 +40,9 @@ Route::post('/contact', 'FrontContactController@submitContact');
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@getIndex');
-Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey');
-Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey');
+Route::get('/home', 'HomeController@getIndex')->name('afterlogin');
+Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey')->name('listIsiSurvey');
+Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey')->name('listHasilSurvey');
 Route::get('tampilHasilSurvey/{id}','HomeController@tampilHasilSurvey');
 Route::get('tampilSurvey/{id}','HomeController@tampilSurvey');
 Route::get('/getmsg','AggrementController@index');

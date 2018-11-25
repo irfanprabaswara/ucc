@@ -1,50 +1,67 @@
-@extends('layouts.templateMahasiswa')
+@extends ('layouts.templatehome')
 
 @section('header')
-        <!-- ******HEADER****** -->
-        <header class="header">
-            <div class="top-bar">
-                <div class="container">
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark home-nav">
+        <img class="navbar-brand logo-direct-home py-3" src="{{asset('images/ucc-direct/direct-white.png')}}" alt="Logo Direct">
+        <button  style="color:white !important" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon" style="color:white !important"></span>
+        </button>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            @if($active=="home")
+            <li id="home" class="nav-item active "><a class="nav-link mx-2" href="{{url('home/')}}">Home</a></li>
+            @else
+            <li id="home" class="nav-item "><a class="nav-link mx-2" href="{{url('home/')}}">Home</a></li>
+            @endif
+            @if($active=="listIsiSurvey")
+            <li id="listIsiSurvey" class="nav-item active  mx-2"><a class="nav-link" href="{{url('listIsiSurvey/')}}">Survey List</a></li>
+            @else
+            <li id="listIsiSurvey" class="nav-item  mx-2"><a class="nav-link" href="{{url('listIsiSurvey/')}}">Survey List</a></li>
+            @endif
+            @if($active=="listHasilSurvey")
+            <li id="listHasilSurvey" class="nav-item active"><a class="nav-link mx-2" href="{{url('listHasilSurvey/')}}">Survey Result List</a></li>
+            @else
+            <li id="listHasilSurvey" class="nav-item"><a class="nav-link mx-2" href="{{url('listHasilSurvey/')}}">Survey Result List</a></li>
+            @endif
+            </ul>
+            <!-- <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+            <!-- Authentication Links -->
+            @if (Auth::guest())
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+            @else
+            <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle pl-2" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+            </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div><!--//to-bar-->
-            <div class="header-main container">
-                <h2 class="logo col-md-8 col-sm-4">
-                    <!-- <a href="{{url('/')}}"><img style="height: 60px;" id="logo" src="{{asset('images/logo.png')}}" alt="Logo"></a> -->
-                    <a href="{{url('home')}}"> <strong style="color:#2669a8"> DIRECT</strong> Diponegoro Research Center</a>
-                </h2><!--//logo-->
-                <div class="info col-md-8 col-sm-8">
-                    <div class="contact pull-right">
-                    </div><!--//contact-->
-                </div><!--//info-->
-            </div><!--//header-main-->
-        </header><!--//header-->
+            <ul class="dropdown-menu" role="menu" id="dropdown-menu-auth">
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        {{ csrf_field() }}
+                    </form>
+                </li>
+            </ul>
+            </div>
+                                
+                            
+            @endif
+            
+
+        </div>
+        </nav>
+        
 @endsection
 
 @section('nav')
@@ -62,9 +79,7 @@
                 
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li id="home" class="nav-item"><a href="{{url('home/')}}">Home</a></li>
-                        <li id="listIsiSurvey" class="nav-item"><a href="{{url('listIsiSurvey/')}}">Daftar Isi Survey</a></li>
-                        <li id="listHasilSurvey" class="nav-item"><a href="{{url('listHasilSurvey/')}}">Daftar Hasil Survey</a></li>
+                       
                         @if($isShow->is_show)
                           <li id="responses" class="nav-item"><a href="{{url('responses/')}}">Responses</a></li>
                         @endif
@@ -76,42 +91,39 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="col-md-3 col-md-offset-9">
-            <ul class="row-right .pull-right">
-                <!-- Breadcrumb Links -->
-                <ol class="breadcrumb pull-right">
-                    <li class="active">Home</li>
-                </ol>
-            </ul>
-        </div>
-            <div class="row">
-                <div class="col-md-12 col-md-offset-0">
-                    
-                    <div class="panel panel-default">
-                        <h1><strong><center>SELAMAT DATANG DI DIPONEGORO HR RESEARCH CENTER<br><i>{{Auth::user()->name}}</i></center></strong></h1>
+            <div class="row justify-content-center pt-4">
+                <div class="col-12 col-md-8">
+                    <h2><strong><center>SELAMAT DATANG DI DIPONEGORO HR RESEARCH CENTER<br><i style="color:#56A8FF !important">{{Auth::user()->name}}</i></center></strong></h2>
+                </div>
+            </div>
+            <div class="row justify-content-center py-5">
+                <div class="col-12 col-md-4 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Survey List</h5>
+                            <p class="card-text text-justify"> <i> Survey List </i>  merupakan menu untuk menampilkan daftar survey yang dapat anda isi. Untuk memulainya, anda cukup memilih survey yang ingin anda isi. Untuk memilihnya, anda dapat menekan tombol dibawah.</p>
+                            <a href="{{url('listIsiSurvey')}}" class="btn btn-primary">Pergi</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="panel panel-default">
-                        <div class="col-md-4 col-md-offset-2">
-                            <div class="panel-heading"><CENTER><h3><strong>DAFTAR ISI SURVEY</strong></h3></CENTER></div>
-
-                                    <div class="panel-body" width="600" height="200">
-                                        <strong>DAFTAR ISI SURVEY</strong> merupakan menu untuk menampilkan daftar survey yang dapat anda isi. Untuk memulainya, anda cukup memilih survey yang ingin anda isi. Untuk memilihnya, anda dapat menekan tombol dibawah ini :<br>
-                                        <a href="{{url('listIsiSurvey')}}" class="btn btn-primary">Tampil Daftar Survey Saya</a>
-                                    </div>
-                        </div>
-
-                        <div class="col-md-4 col-md-offset-0">
-                            <div class="panel-heading"><CENTER><h3><strong>DAFTAR HASIL SURVEY</strong></h3></CENTER></div>
-
-                                    <div class="panel-body" width="600" height="200">
-                                        <strong>DAFTAR HASIL SURVEY</strong> merupakan menu untuk menampilkan daftar hasil survey yang dapat anda lihat. Untuk melihatnya, anda cukup memilih survey yang ingin anda lihat hasilnya. Untuk memilihnya, anda dapat menekan tombol dibawah ini :<br>
-                                        <a href="{{url('listHasilSurvey')}}" class="btn btn-primary">Tampil Daftar Hasil Survey</a>
-                                    </div>
+                <div class="col-12 col-md-4 my-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Survey Result List</h5>
+                            <p class="card-text text-justify"> <i> Survey Result List </i>  merupakan menu untuk menampilkan daftar hasil survey yang dapat anda lihat. Untuk melihatnya, anda cukup memilih survey yang ingin anda lihat hasilnya. Untuk memilihnya, anda dapat menekan tombol dibawah.</p>
+                            <a href="{{url('listHasilSurvey')}}" class="btn btn-primary">Pergi</a>
                         </div>
                     </div>
                 </div>
             </div>
     </div>
+@endsection
+
+@section('script')
+<script>
+    $('.logo-direct-home').click(function(){
+        window.location.href='{{url('/login')}}';
+    })
+</script>
+
 @endsection

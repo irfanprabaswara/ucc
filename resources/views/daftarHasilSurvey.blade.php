@@ -6,30 +6,26 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="page-wrapper">
-        <header class="page-heading clearfix">
-            <h1 class="heading-title pull-left">Daftar Hasil Survey</h1>
-            <!--breadcrumbs-->
-            <ol class="breadcrumb pull-right">
-              <li><a href="/home">Home</a></li>
-              <li class="active">Daftar Hasil Survey</li>
-            </ol>
-            <!--//breadcrumbs-->
+    <div class="row justify-content-center my-4">
+        <header>
+            <h1 class="heading-title pull-left">Survey Result List</h1>
         </header>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-default">
-                        @foreach($aspekList as $row)
-                            <div class="panel-heading"><CENTER>{{$row->topik}}</CENTER></div>
-
-                            <div class="panel-body" width="600" height="200">
-                                {{$row->deskripsi}}<br>
-                                <a href="{{url('tampilHasilSurvey/'.$row->id)}}" class="btn btn-primary pull-right">Tampil Hasil Survey</a>
+    </div>
+            
+            @foreach($aspekList as $row)
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 my-3">
+                    <div class="card">
+                            <div class="card-body">
+                                <strong><h5 class="card-title" style="color:#56A8FF !important">{{$row->topik}}</h5></strong>
+                                <p class="card-text text-justify">{{$row->deskripsi}}</p>
+                                <a href="{{url('tampilHasilSurvey/'.$row->id)}}" class="btn btn-primary">Lihat Hasil Survey</a>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
-                </div>
             </div>
-        </div>
+            
+            @endforeach
+        
 </div>
 @endsection

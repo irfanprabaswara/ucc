@@ -135,12 +135,14 @@ class HomeController extends Controller
 
       $data['title'] = $this->site_name;
       $data['active'] = "listHasilSurvey";
+      $data['title'] = "Survey Result List - Diponegoro Research Center";
+      $data['active-tab']="result";
       
       //mengambil session registeras
       $registeras = Auth::user()->registeras;
       $aspekList = Aspek::where('tujuan','!=',$registeras)->get();  
       // $id=Aspek::find($id);
-      return view('daftarHasilSurvey',compact('aspekList'));
+      return view('daftarHasilSurvey',compact('aspekList'),$data);
     }
 
     public function tampilHasilSurvey(Request $request, $id)
@@ -227,13 +229,13 @@ class HomeController extends Controller
       $meta['author'] = 'Undip World Class University';
       $data['meta'] = $meta;
 
-      $data['title'] = $this->site_name;
+      $data['title'] = "Survey List - Diponegoro Research Center";
       $data['active'] = "listIsiSurvey";
       
       //mengambil session registeras
       $registeras = Auth::user()->registeras;
       $aspekList = Aspek::where('tujuan',$registeras)->get();  
-      return view('daftarIsiSurvey',compact('aspekList'));
+      return view('daftarIsiSurvey',compact('aspekList'),$data);
     }
 
     public function tampilSurvey(Request $request, $id, $informan=null)
@@ -244,7 +246,7 @@ class HomeController extends Controller
         $data['meta'] = $meta;
 
         $data['title'] = "Questionnaire | ". $this->site_name;
-        $data['active'] = "kuisioner";
+        $data['active'] = "listIsiSurvey";
 
         // Get Informan Data
         if (!is_null($informan)) {
