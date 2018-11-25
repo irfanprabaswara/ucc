@@ -6,8 +6,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="_token" content="{{csrf_token()}}" />
-    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">    
-    <link rel="icon" type="image/svg+xml" href="{{asset('images/ucc-direct/direct.svg')}}" sizes="192x192">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{asset('favicon.ico')}}" sizes="32x32" />
+    <!-- <link rel="icon" type="image/svg+xml" href="{{asset('images/ucc-direct/direct.svg')}}" sizes="192x192"> -->
     <title>{{ $title }}</title>
     <!-- Bootstrap core CSS -->
     <link id="theme-style" rel="stylesheet" href="{{asset('plugins/bootstrap4/css/bootstrap.min.css')}}">
