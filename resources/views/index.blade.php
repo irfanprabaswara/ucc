@@ -10,7 +10,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6" style="padding-top:8%">
-            <h4 class=" display-4 text-left text-white" style="width:30%">Diponegoro Research Center</h4>
+            <h4 class=" display-4 text-left text-white" style="width:30%">Diponegoro HR Research Center</h4>
             <p>DIRECT hadir untuk membantu organisasi memenuhi kebutuhannya terkait pengembangan SDM, baik organisasi bisnis, swasta, pendidikan dan pemerintahan. Hasil dari riset ini akan digunakan sebagai dasar dalam penyusunan dan pengembangan program organisasi yang bergerak di sumber daya manusia, sehingga dapat memberikan kontribusi terbaik dalam Pengembangan SDM di Indonesia.</p>
           </div>
           <div class="col-md-6 text-right" style="padding-top:8%">

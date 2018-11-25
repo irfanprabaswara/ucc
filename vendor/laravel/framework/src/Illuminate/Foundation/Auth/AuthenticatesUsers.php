@@ -17,6 +17,7 @@ trait AuthenticatesUsers
     public function showLoginForm()
     {
         $data['title'] = "Login - Diponegoro Research Center";
+        session()->forget('aggrement');
         return view('auth.login', $data);
     }
 

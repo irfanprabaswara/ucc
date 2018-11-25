@@ -124,10 +124,12 @@
                         </div>
                     </div>         
                 </div><!--//privacy-wrapper-->
-                    
-                    <section class="widget">
+                        
+
+
+                        <!-- gak kepake-->
                         @if(!$kontak['phones']->isEmpty() || !$kontak['emails']->isEmpty())
-                        <h3 class="title">All Enquiries</h3>
+                        < <section class="widget">h3 class="title">All Enquiries</h3>
                         @endif
                         @forelse($kontak['phones'] as $phone)
                         <p class="tel col-md-12 col-sm-4"><i class="fa fa-phone"></i>{{$phone->content_contact}}</p>

@@ -238,8 +238,8 @@ class HomeController extends Controller
     public function tampilSurvey(Request $request, $id, $informan=null)
     {
       // Meta variable
-        $meta['description'] = 'Undip World Class University';
-        $meta['author'] = 'Undip World Class University';
+        $meta['description'] = 'Diponegoro Research Center';
+        $meta['author'] = 'Administrator';
         $data['meta'] = $meta;
 
         $data['title'] = "Questionnaire | ". $this->site_name;
@@ -260,6 +260,7 @@ class HomeController extends Controller
 
         // Is Show Responses
         $data['isShow'] = $this->showResponses;
+        dd($kuisioner);
         return view('tampilSurvey', $data);
     }
 

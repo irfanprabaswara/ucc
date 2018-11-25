@@ -31,7 +31,7 @@
     <link rel='stylesheet' href='{{asset("vendor/crudbooster/assets/css/main.css")}}'/>
     <style type="text/css">
       .login-page, .register-page {
-          background: {{ CRUDBooster::getSetting("login_background_color")?:'#dddddd'}} url('{{ CRUDBooster::getSetting("login_background_image")?asset(CRUDBooster::getSetting("login_background_image")):asset('vendor/crudbooster/assets/bg_blur3.jpg') }}');
+          background: {{ CRUDBooster::getSetting("login_background_color")?:'#56A8FF'}} url('{{ CRUDBooster::getSetting("login_background_image")?asset(CRUDBooster::getSetting("login_background_image")):asset('vendor/crudbooster/assets/bg_blur3.jpg') }}');
           color: {{ CRUDBooster::getSetting("login_font_color")?:'#ffffff' }} !important;
           background-repeat: no-repeat;
           background-position: center;
@@ -56,7 +56,7 @@
     <div class="login-box">
       <div class="login-logo">
         <a href="{{url('/')}}">
-            <img title='{!!(CRUDBooster::getSetting('appname') == 'CRUDBooster')?"<b>CRUD</b>Booster":CRUDBooster::getSetting('appname')!!}' src='{{ CRUDBooster::getSetting("logo")?asset(CRUDBooster::getSetting('logo')):asset('vendor/crudbooster/assets/logo_crudbooster.png') }}' style='max-width: 100%;max-height:170px'/>
+            <img title='{!!(CRUDBooster::getSetting('appname') == 'CRUDBooster')?"<b>CRUD</b>Booster":CRUDBooster::getSetting('appname')!!}' src='{{asset('images/ucc-direct/direct-01.png') }}' style='max-width: 100%;max-height:170px'/>
         </a>
       </div><!-- /.login-logo -->      
       <div class="login-box-body">
