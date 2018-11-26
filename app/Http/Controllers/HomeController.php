@@ -159,6 +159,9 @@ class HomeController extends Controller
 
       // Chart
         $aspekList = Aspek::where('id','=',$id)->has('pertanyaan.respon_list')->with('pertanyaan.opsi.opsi_list.respon_list_count', 'pertanyaan.jawaban_bebas')->get();
+        if(count($aspekList)==0){
+            return view('missing');
+        }
         $charts = [];
         $openQuestions = [];
         $count = [];
@@ -264,6 +267,9 @@ class HomeController extends Controller
 
         // Is Show Responses
         $data['isShow'] = $this->showResponses;
+        if(count($kuisioner)==0){
+            return view('missing');
+        }
         return view('tampilSurvey', $data);
     }
 

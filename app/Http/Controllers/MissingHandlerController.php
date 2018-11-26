@@ -66,7 +66,7 @@ class MissingHandlerController extends Controller
                       ->take(4)
                       ->get();
 
-    $data['title'] = "Page Not Found | " . $this->site_name;
+    $data['title'] = "Page Not Found - Diponegeoro Research Center ";
     $data['meta'] = $meta;
 
     return view('missing', $data);

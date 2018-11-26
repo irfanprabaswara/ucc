@@ -16,7 +16,10 @@
     </div>
   @endif
 @empty
-  <p>No Chart to display</p>
+  <script type="text/javascript">
+      window.location = "{{url('/missing')}}";
+  </script>
+  <p onload=window.location='{{url('/')}}'>No Chart to display</p>
 @endforelse
 
 <h2>Open Questions</h2>

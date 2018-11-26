@@ -13,6 +13,7 @@ use App\ContactUs;
 use App\Testimonial;
 use App\Link;
 use App\ShowResponses;
+use Auth;
 
 class FrontPostingController extends Controller
 {
@@ -60,6 +61,9 @@ class FrontPostingController extends Controller
 
     // Index Page
     public function getIndex(){
+        if (Auth::guard($guard)->check()) {
+            return redirect('/home');
+        }
     	// Meta variable
       $meta['description'] = 'Recent updates on Undip World Class University';
       $meta['author'] = 'Undip World Class University';
