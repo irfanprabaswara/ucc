@@ -3,7 +3,7 @@
 @section('header')
         <!-- navbar -->
         <nav class="navbar navbar-expand-lg navbar-dark home-nav">
-        <img class="navbar-brand logo-direct-home py-3" src="{{asset('images/ucc-direct/direct-white.png')}}" alt="Logo Direct">
+        <img class="navbar-brand logo-direct-home py-3" src="{{asset('images/ucc-direct/DIRECT-BG.png')}}" alt="Logo Direct">
         <button  style="color:white !important" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="color:white !important"></span>
         </button>
@@ -93,7 +93,7 @@
     <div class="container-fluid">
             <div class="row justify-content-center pt-4">
                 <div class="col-12 col-md-8">
-                    <h2><strong><center>SELAMAT DATANG DI DIPONEGORO HR RESEARCH CENTER<br><i style="color:#56A8FF !important">{{Auth::user()->name}}</i></center></strong></h2>
+                    <h2><strong><center>SELAMAT DATANG DI DIPONEGORO RESEARCH CENTER<br><i style="color:#56A8FF !important">{{Auth::user()->name}}</i></center></strong></h2>
                 </div>
             </div>
             <div class="row justify-content-center py-5">

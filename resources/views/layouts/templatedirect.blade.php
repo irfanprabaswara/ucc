@@ -27,7 +27,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top navbar-custom">
       <div class="container">
-        <img id="navbar-logo" src="{{asset('images/ucc-direct/direct.svg')}}" alt="Logo Direct">
+        <img id="navbar-logo" src="{{asset('images/ucc-direct/DIRECT.png')}}" alt="Logo Direct">
         <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" style="color:black !important"><i class="fas fa-angle-down"></i></span>
         </button>
@@ -70,6 +70,7 @@
     
     <!-- /.container -->
 
+    @section('footer')
     <!-- Footer -->
     <section id="onepage-contact">
     <div class="container-fluid">
@@ -107,6 +108,7 @@
       </div>
       <!-- /.container -->
     </footer>
+    @show
 
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
      <script src="{{asset('plugins/jquery/jquery.min.js')}}"> </script>
