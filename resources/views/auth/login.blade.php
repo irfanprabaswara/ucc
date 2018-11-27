@@ -1,5 +1,9 @@
 @extends('layouts.templatedirect')
 
+@section('theme')
+    @parent
+@endsection
+
 @section ('header')
     @parent
 @endsection
@@ -10,7 +14,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6" style="padding-top:8%">
-            <div class="card rounded-0">
+            <div class="card animated slideInDown rounded">
                 <div class="card-header">
                     <h3 class="mb-0">Login</h3>
                 </div>

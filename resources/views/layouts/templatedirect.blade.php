@@ -8,6 +8,11 @@
     <meta name="_token" content="{{csrf_token()}}" />
     <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{asset('favicon.ico')}}" sizes="32x32" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <link href="{{asset('vendor/Hover-master/css/hover.css')}}" rel="stylesheet">
     <!-- <link rel="icon" type="image/svg+xml" href="{{asset('images/ucc-direct/direct.svg')}}" sizes="192x192"> -->
     <title>{{ $title }}</title>
     <!-- Bootstrap core CSS -->
@@ -118,7 +123,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="{{asset('vendor/scrollreveal/scrollreveal.min.js')}}"></script>
     <script src="{{asset('vendor/scrollreveal/scrolling-nav.js')}}"></script>
-
     <!-- Bootstrap core JavaScript -->
     <!-- <script type="text/javascript" src="template/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="template/bootstrap/js/bootstrap.bundle.min.js"></script> -->

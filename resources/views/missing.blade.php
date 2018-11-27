@@ -1,5 +1,9 @@
 @extends('layouts.templatedirect')
 
+@section('stockbody')
+<body style="background-color:#ededed">
+@endsection
+
 @section('header')
 @endsection
 

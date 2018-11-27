@@ -39,7 +39,7 @@
 </div>
 @endif
 <div class="wrapper">
-    <form class="form" method="post" action="{{url('kuisioner/'.$id)}}">
+    <form class="form" method="post" action="{{url('kuisioner/'.Crypt::encrypt($row->id))}}">
         {{ csrf_field() }}
         <h2 class="text-center pt-5 pb-0 mb-1">Your Personal Info</h2> {{-- {{dd($informan)}} --}}
         <hr class="under-job-title mb-5">

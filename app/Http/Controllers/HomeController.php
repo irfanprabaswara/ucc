@@ -20,6 +20,7 @@ use App\Respon;
 use App\ResponList;
 use Auth;
 use Lava;
+use Crypt;
 
 class HomeController extends Controller
 {
@@ -145,10 +146,11 @@ class HomeController extends Controller
       return view('daftarHasilSurvey',compact('aspekList'),$data);
     }
 
-    public function tampilHasilSurvey(Request $request, $id)
+    public function tampilHasilSurvey(Request $request, $idenc)
     {
       // if(!$this->showResponses->is_show)
       //     return redirect('/');
+      $id = Crypt::decrypt($idenc);
         // Meta variable
         $meta['description'] = 'Whats companys said about Undip World Class University\'s alumni';
         $meta['author'] = 'Undip World Class University';
@@ -241,8 +243,9 @@ class HomeController extends Controller
       return view('daftarIsiSurvey',compact('aspekList'),$data);
     }
 
-    public function tampilSurvey(Request $request, $id, $informan=null)
+    public function tampilSurvey(Request $request, $idenc, $informan=null)
     {
+        $id = Crypt::decrypt($idenc);
       // Meta variable
         $meta['description'] = 'Diponegoro Research Center';
         $meta['author'] = 'Administrator';
@@ -273,7 +276,8 @@ class HomeController extends Controller
         return view('tampilSurvey', $data);
     }
 
-    public function submitKuisioner(Request $request, $id){
+    public function submitKuisioner(Request $request, $idenc){
+        $id = Crypt::decrypt($idenc);
       // Meta variable
         $meta['description'] = 'Kuisioner Tentang Kinerja Alumni Undip pada Dunia Kerja';
         $meta['author'] = 'Undip World Class University';
@@ -385,6 +389,7 @@ class HomeController extends Controller
         $data['isShow'] = $this->showResponses;
 
         $data['sukses'] = "Thank Your for Your Participation.";
+        session(['sukses'=>'1']);
         return view('home', $data);
     }
 }

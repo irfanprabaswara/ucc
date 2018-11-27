@@ -1,11 +1,15 @@
 @extends('auth.login')
+@section('theme')
+@parent
+@endsection
+
 
 @section('content')
 <header class="business-header">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6" style="padding-top:8%">
-            <div class="card rounded-0">
+            <div class="card rounded">
                 <div class="card-header">
                     <h3 class="mb-0">Register</h3>
                 </div>
@@ -16,12 +20,12 @@
                         <div class="form-group{{ $errors->has('registras') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-6 control-label">Register as</label>
 
-                            <div class=" col-md-6 btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary">
-                                <input  type="radio"  name="registeras" value="company" required autofocus> Company
-                                </label>
+                            <div class=" col-12 justify-content-center btn-group btn-group-toggle" data-toggle="buttons">
                                 <label class="btn btn-secondary active">
-                                <input  type="radio"  name="registeras" value="student" required autofocus checked> Student
+                                <input  type="radio"  name="registeras" value="company" required autofocus checked> Company
+                                </label>
+                                <label class="btn btn-secondary">
+                                <input  type="radio"  name="registeras" value="student" required autofocus> Student
                                 </label>
 
                                 @if ($errors->has('registeras'))
@@ -107,7 +111,7 @@
     @if(Session::has('aggrement'))
     @else
     <!-- modal -->
-    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal animated bounceInDown" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">

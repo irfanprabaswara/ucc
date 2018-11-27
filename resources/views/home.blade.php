@@ -2,28 +2,32 @@
 
 @section('header')
         <!-- navbar -->
+        @if(Session::get('sukses')=="1")
+        <script>swal({type: 'success',title: 'Your response has been recorded',showConfirmButton: false,timer: 1500})</script>
+        {{Session::forget('sukses')}}
+        @endif
         <nav class="navbar navbar-expand-lg navbar-dark home-nav">
         <img class="navbar-brand logo-direct-home py-3" src="{{asset('images/ucc-direct/DIRECT-BG.png')}}" alt="Logo Direct">
-        <button  style="color:white !important" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button  style="color:white !important" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" style="color:white !important"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             @if($active=="home")
-            <li id="home" class="nav-item active "><a class="nav-link mx-2" href="{{url('home/')}}">Home</a></li>
+            <li id="home" class="nav-item active"><a class="nav-link mx-2" href="{{url('home/')}}">Home</a></li>
             @else
-            <li id="home" class="nav-item "><a class="nav-link mx-2" href="{{url('home/')}}">Home</a></li>
+            <li id="home" class="nav-item hvr-underline-from-center "><a class="nav-link mx-2" href="{{url('home/')}}">Home</a></li>
             @endif
             @if($active=="listIsiSurvey")
-            <li id="listIsiSurvey" class="nav-item active  mx-2"><a class="nav-link" href="{{url('listIsiSurvey/')}}">Survey List</a></li>
+            <li id="listIsiSurvey" class="nav-item active mx-2"><a class="nav-link" href="{{url('listIsiSurvey/')}}">Survey List</a></li>
             @else
-            <li id="listIsiSurvey" class="nav-item  mx-2"><a class="nav-link" href="{{url('listIsiSurvey/')}}">Survey List</a></li>
+            <li id="listIsiSurvey" class="nav-item hvr-underline-from-center mx-2"><a class="nav-link" href="{{url('listIsiSurvey/')}}">Survey List</a></li>
             @endif
             @if($active=="listHasilSurvey")
-            <li id="listHasilSurvey" class="nav-item active"><a class="nav-link mx-2" href="{{url('listHasilSurvey/')}}">Survey Result List</a></li>
+            <li id="listHasilSurvey" class="nav-item  active"><a class="nav-link mx-2" href="{{url('listHasilSurvey/')}}">Survey Result List</a></li>
             @else
-            <li id="listHasilSurvey" class="nav-item"><a class="nav-link mx-2" href="{{url('listHasilSurvey/')}}">Survey Result List</a></li>
+            <li id="listHasilSurvey" class="nav-item hvr-underline-from-center"><a class="nav-link mx-2" href="{{url('listHasilSurvey/')}}">Survey Result List</a></li>
             @endif
             </ul>
             <!-- <form class="form-inline my-2 my-lg-0">
@@ -35,12 +39,29 @@
             <a href="{{ route('login') }}">Login</a>
             <a href="{{ route('register') }}">Register</a>
             @else
-            <div class="dropdown">
-            <a href="#" class="nav-link dropdown-toggle pl-2" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{ Auth::user()->name }} <span class="caret"></span>
+            <div class="dropdown navakun">
+            <a class="nav-link navakun " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ Auth::user()->name }} <i class="fa fa-chevron-down hvr-icon"></i>
             </a>
 
-            <ul class="dropdown-menu" role="menu" id="dropdown-menu-auth">
+            <div class="dropdown-menu dropdown-menu-center" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </div>
+            </div>
+            
+            <!-- <div class="dropdown hvr-icon-hang mb-1 mr-0">
+            <a href="#" class=" nav-link pl-2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }} <i class="fa fa-chevron-down hvr-icon"></i>
+            </a>
+
+            <ul class="dropdown-menu ml-5 mt-3" aria-labelledby="navbarDropdown" style="min-width:2rem;" role="menu" id="dropdown-menu-auth">
                 <li>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
@@ -53,7 +74,7 @@
                     </form>
                 </li>
             </ul>
-            </div>
+            </div> -->
                                 
                             
             @endif

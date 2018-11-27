@@ -188,6 +188,10 @@ margin-left: 4px;
         {
             width:20%;
         }
+    .navakun
+    {
+        padding-left: 0em !important;
+    }
 }
 
 hr.under-job-title{
