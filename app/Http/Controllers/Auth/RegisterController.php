@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -47,32 +48,26 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {   
-        if($data['registeras']=='company'){
-            return Validator::make($data, [
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|confirmed',
-                'registeras' => 'required|string',
-                'aggrement' => 'required|max:1',
-                'phone' => 'required|string|min:3|max:13|unique:users',
-                'address' => 'required|string|min:4|max:255',
-                'company_type' => 'required|string|min:5|max:20|nullable',
-            ]);
-        }
-        else{
-            return Validator::make($data, [
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:6|confirmed',
-                'registeras' => 'required|string',
-                'aggrement' => 'required|max:1',
-                'ttl' => 'required|date|nullable',
-                'phone' => 'required|string|min:3|max:13|unique:users',
-                'address' => 'required|string|min:4|max:255',
-                'institution' => 'required|string|min:5|max:50|nullable',
-                'department' => 'required|string|min:5|max:50|nullable',
-            ]);
-        }
+        
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'gender' => 'required|string|max:1',
+            'birthdate' => 'required|date|nullable',
+            'education' => 'required|string',
+            'institution' => 'required|string|min:5|max:50',
+            'department' => 'required|string|min:5|max:50',
+            'position' => 'required|string|min:5|max:50',
+            'province' => 'required|string|',
+            'city' => 'required|string|',
+            'district' => 'required|string|',
+            'village' => 'required|string|',
+            'phone' => 'required|string|min:3|max:13|unique:users',
+            'address' => 'required|string|min:4|max:255',
+            'aggrement' => 'required|max:1',
+        ]);
+        
        
     }
 
@@ -84,30 +79,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['registeras']=='company'){
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'registeras' =>$data['registeras'],
-                'phone' =>  $data['phone'],
-                'address' =>  $data['address'],
-                'company_type' =>  $data['company_type'],
-            ]);
-        }
-        else{
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'registeras' =>$data['registeras'],
-                'ttl' =>  $data['ttl'],
-                'phone' =>  $data['phone'],
-                'address' =>  $data['address'],
-                'institution' =>  $data['institution'],
-                'department' =>  $data['department'],
-            ]);
-        }
         
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'gender' => $data['gender'],
+            'birthdate' =>  $data['birthdate'],
+            'education' => $data['education'],
+            'institution' =>  $data['institution'],
+            'department' =>  $data['department'],
+            'position' => $data['position'],
+            'province' => $data['province'],
+            'city' => $data['city'],
+            'district' => $data['district'],
+            'village' => $data['village'],
+            'phone' =>  $data['phone'],
+            'address' =>  $data['address'],
+        ]);
+        
+        
+    }
+    public function showRegistrationForm()
+    {
+        $education = DB::table('education')->select('*')->get();
+        $wilayah = DB::table('wilayah_2018')->select('kode','nama')->whereRaw('CHAR_LENGTH(kode)=2')->orderby('nama')->get();
+        $data['education'] = $education;
+        $data['province'] = $wilayah;
+        $data['title'] = "Register - Diponegoro Research Center";
+
+        return view('auth.register')->with($data);
     }
 }

@@ -11,7 +11,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6" style="padding-top:8%">
-            <div class="card animated flipInY rounded">
+            <div class="card animated fadeIn rounded">
                 <div class="card-header">
                     <h3 class="mb-0">Register</h3>
                 </div>
@@ -19,26 +19,7 @@
                 <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('registras') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-6 control-label">Register as</label>
-
-                            <div class=" col-12 justify-content-center btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary active">
-                                <input  type="radio" id="switcher" name="registeras" value="company" required autofocus checked> Company
-                                </label>
-                                <label class="btn btn-secondary">
-                                <input  type="radio" id="switcher2" name="registeras" value="student" required autofocus> Student
-                                </label>
-
-                                @if ($errors->has('registeras'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('registeras') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                       <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-6 control-label">Name</label>
 
                             <div class="col-md-12">
@@ -85,15 +66,34 @@
 
                             <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control form-control-sm" name="password_confirmation" required autofocus>
-                                <input type="text" name="aggrement" value="{{Session::get('aggrement')}}" hidden>
+                                <!-- <input type="text" name="aggrement" value="{{Session::get('aggrement')}}" hidden> -->
                             </div>
                         </div>
 
-                        <div style="display:none" class="ttl form-group{{ $errors->has('ttl') ? ' has-error' : '' }}">
-                            <label for="ttl" class="col-md-9 control-label">Birthdate (format: yyyy-mm-dd)</label>
+                        <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                            <label for="gender" class="col-md-6 control-label">Gender</label>
+
+                            <div class=" col-12">
+                                <label >
+                                <input  type="radio" id="switcher" name="gender" value="L" required autofocus> Male
+                                </label>
+                                <label>
+                                <input  type="radio" id="switcher2" name="gender" value="P" required autofocus> Female
+                                </label>
+
+                                @if ($errors->has('gender'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="birthdate form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
+                            <label for="birthdate" class="col-md-9 control-label">Birthdate (format: yyyy-mm-dd)</label>
 
                             <div class="col-md-12 input-group">
-                                <input id="ttl" type="text" data-toggle="datepicker" class="form-control form-control-sm calendar" name="ttl" value="{{ old('ttl') }}" autofocus>
+                                <input id="birthdate" type="text" data-toggle="datepicker" class="form-control form-control-sm calendar" name="birthdate" value="{{ old('birthdate') }}" autofocus>
                                 <div class="input-group-append">
                                     <span class="input-group-text" id="basic-addon2"><i class="fas fa-calendar-alt"></i></span>
                                 </div>
@@ -101,9 +101,142 @@
                                 $('.calendar').datepicker({changeYear: true,changeMonth:true,yearRange: "1942:3000",dateFormat: 'yy-mm-dd'});
                                 </script>
 
-                                @if ($errors->has('ttl'))
+                                @if ($errors->has('birthdate'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('ttl') }}</strong>
+                                        <strong>{{ $errors->first('birthdate') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('education') ? ' has-error' : '' }}">
+                            <label for="education" class="col-md-6 control-label">Education</label>
+
+                            <div class="col-md-12">
+                            <select id="education" name="education" class="form-control">
+                                <option disabled selected>Choose education...</option>
+                                @foreach($education as $pendidikan)
+                                <option>{{$pendidikan->level}}</option>
+                                @endforeach
+                            </select>
+                        
+
+                                @if ($errors->has('education'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('education') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="institution form-group{{ $errors->has('institution') ? ' has-error' : '' }}">
+                            <label for="institution" class="col-md-6 control-label">Institution</label>
+
+                            <div class="col-md-12">
+                                <input id="institution" type="text" class="form-control form-control-sm" name="institution" value="{{ old('institution') }}" required autofocus>
+
+                                @if ($errors->has('institution'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('institution') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="department form-group{{ $errors->has('department') ? ' has-error' : '' }}">
+                            <label for="department" class="col-md-6 control-label">Department</label>
+
+                            <div class="col-md-12">
+                                <input id="department" type="text" class="form-control form-control-sm" name="department" value="{{ old('department') }}" required autofocus>
+
+                                @if ($errors->has('department'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('department') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
+                            <label for="position" class="col-md-6 control-label">Position</label>
+
+                            <div class="col-md-12">
+                                <input id="position" type="text" class="form-control form-control-sm" name="position" value="{{ old('position') }}" required autofocus>
+
+                                @if ($errors->has('position'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('position') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                       <div class="form-group{{ $errors->has('province') ? ' has-error' : '' }}">
+                            <label for="province" class="col-md-6 control-label">Province</label>
+
+                            <div class="col-md-12">
+                            <select id="province" name="province" class="form-control">
+                                <option disabled selected>Choose province...</option>
+                                @foreach($province as $provinsi)
+                                <option value="{{$provinsi->kode}}">{{$provinsi->nama}}</option>
+                                @endforeach
+                            </select>
+                        
+
+                                @if ($errors->has('province'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('province') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <label for="city" class="col-md-6 control-label">City&nbsp;<span id="loader" style="visibility:hidden"><i class="fa fa-spinner fa-spin"></i></span></label>
+
+                            <div class="col-12">
+                            <select id="city" name="city" class="form-control">
+                                <option disabled selected>Choose city...</option>
+                            </select>
+                        
+
+                                @if ($errors->has('city'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('district') ? ' has-error' : '' }}">
+                            <label for="district" class="col-md-6 control-label">District&nbsp;<span id="loader2" style="visibility:hidden"><i class="fa fa-spinner fa-spin"></i></span></label>
+
+                            <div class="col-12">
+                            <select id="district" name="district" class="form-control">
+                                <option disabled selected>Choose district...</option>
+                            </select>
+                        
+
+                                @if ($errors->has('district'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('district') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('village') ? ' has-error' : '' }}">
+                            <label for="village" class="col-md-6 control-label">Village&nbsp;<span id="loader3" style="visibility:hidden"><i class="fa fa-spinner fa-spin"></i></span></label>
+
+                            <div class="col-12">
+                            <select id="village" name="village" class="form-control">
+                                <option disabled selected>Choose village...</option>
+                            </select>
+                        
+
+                                @if ($errors->has('village'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('village') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -137,59 +270,28 @@
                             </div>
                         </div>
 
-                         <div style="display:none" class="institution form-group{{ $errors->has('institution') ? ' has-error' : '' }}">
-                            <label for="institution" class="col-md-6 control-label">Institution</label>
-
+                        <div class="form-group{{ $errors->has('aggrement') ? ' has-error' : '' }}">
                             <div class="col-md-12">
-                                <input id="institution" type="text" class="form-control form-control-sm" name="institution" value="{{ old('institution') }}" required autofocus>
-
-                                @if ($errors->has('institution'))
+                                <div class="form-check">
+                                <input id="aggrement" name="aggrement" class="form-check-input" type="checkbox" value="1" required autofocus>
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Saya setuju
+                                </label>
+                                </div>
+                                @if ($errors->has('aggrement'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('institution') }}</strong>
+                                        <strong>{{ $errors->first('aggrement') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
-
-                         <div style="display:none" class="department form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-                            <label for="department" class="col-md-6 control-label">Department</label>
-
-                            <div class="col-md-12">
-                                <input id="department" type="text" class="form-control form-control-sm" name="department" value="{{ old('department') }}" required autofocus>
-
-                                @if ($errors->has('department'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('department') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                         <div class="company_type form-group{{ $errors->has('company_type') ? ' has-error' : '' }}">
-                            <label for="company_type" class="col-md-6 control-label">Company Type</label>
-
-                            <div class="col-md-12">
-                                <input id="company_type" type="text" class="form-control form-control-sm" name="company_type" value="{{ old('company_type') }}" required autofocus>
-
-                                @if ($errors->has('company_type'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('company_type') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                @if(Session::has('aggrement')) 
-                                <button type="submit" class="btn btn-primary">
+                                <button id="submit" type="submit" class="btn btn-primary">
                                     Register
                                 </button>
-                                @else
-                                <button type="submit" class="btn btn-primary" disabled>
-                                    Register
-                                </button>
-                                @endif
                             </div>
                         </div>
                     </form>
@@ -200,10 +302,10 @@
         </div>
       </div>
     </header>
-    @if(Session::has('aggrement'))
-    @else
+    <!-- @if(Session::has('aggrement'))
+    @else -->
     <!-- modal -->
-    <div class="modal animated bounceInDown" tabindex="-1" role="dialog" id="myModal">
+    <!-- <div class="modal animated bounceInDown" tabindex="-1" role="dialog" id="myModal">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -218,67 +320,69 @@
         </div>
         </div>
     </div>
-    </div>
-    @endif
+    </div> -->
+    <!-- @endif -->
 
 @endsection
 
 @section('script')
 <script type="text/javascript">
-    $(window).on('load',function(){
-        $('#myModal').modal('show');
-    });
+    // $(window).on('load',function(){
+    //     $('#myModal').modal('show');
+    // });
 
-    $('.decline-aggrement').click(function(){
-        window.location.href='{{url('/')}}';
-    })
-    $('#myModal').modal({
-        backdrop: 'static',
-        keyboard: false  // to prevent closing with Esc button (if you want this too)
-    })
+    // $('.decline-aggrement').click(function(){
+    //     window.location.href='{{url('/')}}';
+    // })
+    // $('#myModal').modal({
+    //     backdrop: 'static',
+    //     keyboard: false  // to prevent closing with Esc button (if you want this too)
+    // })
 
     //ajax aggrement
-    $('.proceed-aggrement').on('click',function(){
-        $.ajax({
-                type:'GET',
-                url:'{{url('/getmsg')}}',
-                success:function(data){
-                    window.location.href='{{url('/register')}}'; 
-                }
-            });  
-    });
+    // $('.proceed-aggrement').on('click',function(){
+    //     $.ajax({
+    //             type:'GET',
+    //             url:'{{url('/getmsg')}}',
+    //             success:function(data){
+    //                 window.location.href='{{url('/register')}}'; 
+    //             }
+    //         });  
+    // });
 
     //datepicker
 
-    $('#switcher2').change(function()
-    {
-        if($("#radio_1").prop("checked", true)){
-            $('.company_type').fadeOut("fast");
-            $('#company_type').prop('required',false);
-            $('.ttl').fadeIn('slow');
-            $('#ttl').prop('required',true);
-            $('.institution').fadeIn('slow');
-            $('#institution').prop('required',true);
-            $('.department').fadeIn('slow');
-            $('#department').prop('required',true);
-        }
-    });
-    $('#switcher').change(function()
-    {
-        if($("#radio_1").prop("checked", true)){
-            $('.company_type').fadeIn('slow');
-            $('#company_type').prop('required',true);
-            $('.ttl').fadeOut("fast");
-            $('#ttl').prop('required',false);
-            $('.institution').fadeOut("fast");
-            $('#institution').prop('required',false);
-            $('.department').fadeOut("fast");
-            $('#department').prop('required',false);
+    // $('#switcher2').change(function()
+    // {
+    //     if($("#radio_1").prop("checked", true)){
+    //         $('.company_type').fadeOut("fast");
+    //         $('#company_type').prop('required',false);
+    //         $('.birthdate').fadeIn('slow');
+    //         $('#birthdate').prop('required',true);
+    //         $('.institution').fadeIn('slow');
+    //         $('#institution').prop('required',true);
+    //         $('.department').fadeIn('slow');
+    //         $('#department').prop('required',true);
+    //     }
+    // });
+    // $('#switcher').change(function()
+    // {
+    //     if($("#radio_1").prop("checked", true)){
+    //         $('.company_type').fadeIn('slow');
+    //         $('#company_type').prop('required',true);
+    //         $('.birthdate').fadeOut("fast");
+    //         $('#birthdate').prop('required',false);
+    //         $('.institution').fadeOut("fast");
+    //         $('#institution').prop('required',false);
+    //         $('.department').fadeOut("fast");
+    //         $('#department').prop('required',false);
             
-        }
-    });
+    //     }
+    // });
+
+ 
    
 </script>
-
+<script src="{{asset('assets/js/ajaxwilayah.js')}}"></script>
 
 @endsection

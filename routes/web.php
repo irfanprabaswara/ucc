@@ -45,4 +45,7 @@ Route::get('/listIsiSurvey', 'HomeController@listIsiSurvey')->name('listIsiSurve
 Route::get('/listHasilSurvey', 'HomeController@listHasilSurvey')->name('listHasilSurvey');
 Route::get('tampilHasilSurvey/{id}','HomeController@tampilHasilSurvey');
 Route::get('tampilSurvey/{id}','HomeController@tampilSurvey');
-Route::get('/getmsg','AggrementController@index');
+// Route::get('/getmsg','AggrementController@index');
+Route::get('/city/{id}','WilayahController@city');
+Route::get('/district/{id}','WilayahController@district');
+Route::get('/village/{id}','WilayahController@village');

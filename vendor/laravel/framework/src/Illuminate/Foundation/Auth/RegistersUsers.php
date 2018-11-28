@@ -17,7 +17,6 @@ trait RegistersUsers
      */
     public function showRegistrationForm()
     {
-        $data['title'] = "Register - Diponegoro Research Center";
         return view('auth.register',$data);
     }
 
