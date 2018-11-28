@@ -46,14 +46,34 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'registeras' => 'required|string',
-            'aggrement' => 'required|max:1',
-        ]);
+    {   
+        if($data['registeras']=='company'){
+            return Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'registeras' => 'required|string',
+                'aggrement' => 'required|max:1',
+                'phone' => 'required|string|min:3|max:13|unique:users',
+                'address' => 'required|string|min:4|max:255',
+                'company_type' => 'required|string|min:5|max:20|nullable',
+            ]);
+        }
+        else{
+            return Validator::make($data, [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:6|confirmed',
+                'registeras' => 'required|string',
+                'aggrement' => 'required|max:1',
+                'ttl' => 'required|date|nullable',
+                'phone' => 'required|string|min:3|max:13|unique:users',
+                'address' => 'required|string|min:4|max:255',
+                'institution' => 'required|string|min:5|max:50|nullable',
+                'department' => 'required|string|min:5|max:50|nullable',
+            ]);
+        }
+       
     }
 
     /**
@@ -64,11 +84,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'registeras' =>$data['registeras'],
-        ]);
+        if($data['registeras']=='company'){
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'registeras' =>$data['registeras'],
+                'phone' =>  $data['phone'],
+                'address' =>  $data['address'],
+                'company_type' =>  $data['company_type'],
+            ]);
+        }
+        else{
+            return User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+                'registeras' =>$data['registeras'],
+                'ttl' =>  $data['ttl'],
+                'phone' =>  $data['phone'],
+                'address' =>  $data['address'],
+                'institution' =>  $data['institution'],
+                'department' =>  $data['department'],
+            ]);
+        }
+        
     }
 }

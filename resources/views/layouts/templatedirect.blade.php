@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" href="{{asset('favicon.ico')}}" sizes="32x32" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.min.css">
+    <script src="{{asset('plugins/jquery/jquery.min.js')}}"> </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.29.2/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
     <link href="{{asset('vendor/Hover-master/css/hover.css')}}" rel="stylesheet">
@@ -116,7 +117,6 @@
     @show
 
      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="{{asset('plugins/jquery/jquery.min.js')}}"> </script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}" ></script>
