@@ -275,7 +275,7 @@
                                 <div class="form-check">
                                 <input id="aggrement" name="aggrement" class="form-check-input" type="checkbox" value="1" required autofocus>
                                 <label class="form-check-label" for="defaultCheck1">
-                                    Saya setuju
+                                    Check here to indicate that you have read and agree to the terms of the <a target="_blank" rel="noopener noreferrer" href="{{url('/agreement')}}">DIRECT Member Agreement</a>
                                 </label>
                                 </div>
                                 @if ($errors->has('aggrement'))

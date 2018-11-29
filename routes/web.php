@@ -49,3 +49,6 @@ Route::get('tampilSurvey/{id}','HomeController@tampilSurvey');
 Route::get('/city/{id}','WilayahController@city');
 Route::get('/district/{id}','WilayahController@district');
 Route::get('/village/{id}','WilayahController@village');
+Route::get('/agreement', function(){
+    return view('directagreement');
+});
