@@ -127,8 +127,10 @@
             </div>
         </div>
     </div>
-    <a href="javascript:" id="return-to-top"><i class="fas fa-angle-up pl-1"></i></a>
 </div><!--//content-->
+<footer>
+<a href="javascript:" style="z-index:200000;" id="return-to-top"><i class="fas fa-angle-up pl-1"></i></a>
+</footer>
 @endsection
 
 @section('script')

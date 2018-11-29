@@ -30,6 +30,7 @@
                 <div class="col-12 col-md-8 my-3">
                 {!! $aspekList->links('vendor.pagination.bootstrap-4') !!}
             </div>
+            </div>
         
 </div>
 @endsection
