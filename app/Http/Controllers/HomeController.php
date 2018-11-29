@@ -21,6 +21,7 @@ use App\ResponList;
 use Auth;
 use Lava;
 use Crypt;
+use Session;
 
 class HomeController extends Controller
 {
@@ -301,59 +302,59 @@ class HomeController extends Controller
         // Get Kuisioner Questions
         $kuisioner = Aspek::with('pertanyaan.opsi.opsi_list')->where('id','=',$id)->get();
         $data['kuisioner_list'] = $kuisioner;
-
-        // Validating Input
-        $this->validate($request, [
-            'nama' => 'required|string|min:3|max:512',
-            'jabatan' => 'required|min:1|max:128',
-            'email' => 'required|min:1|max:128|email',
-            'telpon' => 'required|min:1|max:32',
-            'perusahaan' => 'required|min:1|max:128',
-            'email_perusahaan' => 'required|min:1|max:128|email',
-            'telpon_perusahaan' => 'required|min:1|max:32',
-        ]);
+        $userid=Auth::user()->id;
+        // // Validating Input
+        // $this->validate($request, [
+        //     'nama' => 'required|string|min:3|max:512',
+        //     'jabatan' => 'required|min:1|max:128',
+        //     'email' => 'required|min:1|max:128|email',
+        //     'telpon' => 'required|min:1|max:32',
+        //     'perusahaan' => 'required|min:1|max:128',
+        //     'email_perusahaan' => 'required|min:1|max:128|email',
+        //     'telpon_perusahaan' => 'required|min:1|max:32',
+        // ]);
 
         // Updating Informan
-        if(!is_null($request->id)){
-            $informan = Informan::find($request->id);
-            $informan->nama = $request->nama;
-            $informan->jabatan = $request->jabatan;
-            $informan->email = $request->email;
-            $informan->telpon = $request->telpon;
-            $informan->perusahaan = $request->perusahaan;
-            $informan->email_perusahaan = $request->email_perusahaan;
-            $informan->telpon_perusahaan = $request->telpon_perusahaan;
+        // if(!is_null($request->id)){
+        //     $informan = Informan::find($request->id);
+        //     $informan->nama = $request->nama;
+        //     $informan->jabatan = $request->jabatan;
+        //     $informan->email = $request->email;
+        //     $informan->telpon = $request->telpon;
+        //     $informan->perusahaan = $request->perusahaan;
+        //     $informan->email_perusahaan = $request->email_perusahaan;
+        //     $informan->telpon_perusahaan = $request->telpon_perusahaan;
 
-            try {
-                $informan->save();
-            } catch (QueryException $e) {
-                return redirect('/kuisioner')->withInput();
-            }
-            $informan_id = $request->id;
-        }
-        // New informan
-        else{
-            $informan = new Informan();
-            $informan->nama = $request->nama;
-            $informan->jabatan = $request->jabatan;
-            $informan->email = $request->email;
-            $informan->telpon = $request->telpon;
-            $informan->perusahaan = $request->perusahaan;
-            $informan->email_perusahaan = $request->email_perusahaan;
-            $informan->telpon_perusahaan = $request->telpon_perusahaan;
-            $informan->url = base_convert(microtime(false), 10, 36);;
+        //     try {
+        //         $informan->save();
+        //     } catch (QueryException $e) {
+        //         return redirect('/kuisioner')->withInput();
+        //     }
+        //     $informan_id = $request->id;
+        // }
+        // // New informan
+        // else{
+        //     $informan = new Informan();
+        //     $informan->nama = $request->nama;
+        //     $informan->jabatan = $request->jabatan;
+        //     $informan->email = $request->email;
+        //     $informan->telpon = $request->telpon;
+        //     $informan->perusahaan = $request->perusahaan;
+        //     $informan->email_perusahaan = $request->email_perusahaan;
+        //     $informan->telpon_perusahaan = $request->telpon_perusahaan;
+        //     $informan->url = base_convert(microtime(false), 10, 36);;
 
-            try {
-                $informan->save();
-            } catch (QueryException $e) {
-                return redirect('/kuisioner')->withInput();
-            }
-            $informan_id = $informan->id;
-        }
+        //     try {
+        //         $informan->save();
+        //     } catch (QueryException $e) {
+        //         return redirect('/kuisioner')->withInput();
+        //     }
+        //     $informan_id = $informan->id;
+        // }
 
         // Insert new respon
         $respon = new Respon();
-        $respon->id_informan = $informan_id;
+        $respon->id_informan = $userid;
         try {
             $respon->save();
         } catch (QueryException $e) {

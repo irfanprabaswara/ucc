@@ -41,49 +41,49 @@
 <div class="wrapper">
     <form class="form" method="post" action="{{url('kuisioner/'.Crypt::encrypt($row->id))}}">
         {{ csrf_field() }}
-        <h2 class="text-center pt-5 pb-0 mb-1">Your Personal Info</h2> {{-- {{dd($informan)}} --}}
-        <hr class="under-job-title mb-5">
+        <h2 class="text-center pt-5 pb-0 mb-1" hidden>Your Personal Info</h2> {{-- {{dd($informan)}} --}}
+        <!-- <hr class="under-job-title mb-5"> -->
         <input type="hidden" name="id" value="@if(!is_null(old('id'))){{old('id')}}@elseif(isset($informan->id)){{$informan->id}}@endif">
         <div class="field">
             <div class="form-group">
-                <label>Name*</label>
-                <input type="text" name="nama" class="form-control" value="@if(!is_null(old('nama'))){{old('nama')}}@elseif(isset($informan->nama)){{$informan->nama}}@endif" placeholder="Your Full Name" required />
+                <label hidden>Name*</label hidden>
+                <input type="text" name="nama" class="form-control" value="@if(!is_null(old('nama'))){{old('nama')}}@elseif(isset($informan->nama)){{$informan->nama}}@endif" placeholder="Your Full Name" hidden />
             </div>
         </div>
         <div class="field">
             <div class="form-group">
-                <label>Position*</label>
-                <input type="text" name="jabatan" class="form-control" value="@if(!is_null(old('jabatan'))){{old('jabatan')}}@elseif(isset($informan->jabatan)){{$informan->jabatan}}@endif" placeholder="Example: CEO" required />
+                <label hidden>Position*</label>
+                <input type="text" name="jabatan" class="form-control" value="@if(!is_null(old('jabatan'))){{old('jabatan')}}@elseif(isset($informan->jabatan)){{$informan->jabatan}}@endif" placeholder="Example: CEO" hidden />
             </div>
         </div>
         <div class="field">
             <div class="form-group">
-                <label>Email*</label>
-                <input type="email" name="email" class="form-control" value="@if(!is_null(old('email'))){{old('email')}}@elseif(isset($informan->email)){{$informan->email}}@endif" placeholder="Example: pemilik@jayaabadi.com" required />
+                <label hidden>Email*</label>
+                <input type="email" name="email" class="form-control" value="@if(!is_null(old('email'))){{old('email')}}@elseif(isset($informan->email)){{$informan->email}}@endif" placeholder="Example: pemilik@jayaabadi.com" hidden />
             </div>
         </div>
         <div class="field">
             <div class="form-group">
-                <label>Phone*</label>
-                <input type="text" name="telpon" class="form-control" value="@if(!is_null(old('telpon'))){{old('telpon')}}@elseif($informan->telpon){{$informan->telpon}}@endif" placeholder="+62 " required />
+                <label hidden>Phone*</label>
+                <input type="text" name="telpon" class="form-control" value="@if(!is_null(old('telpon'))){{old('telpon')}}@elseif($informan->telpon){{$informan->telpon}}@endif" placeholder="+62 " hidden />
             </div>
         </div>
         <div class="field">
             <div class="form-group">
-                <label>Company*</label>
-                <input type="text" name="perusahaan" class="form-control" value="@if(!is_null(old('perusahaan'))){{old('perusahaan')}}@elseif(isset($informan->perusahaan)){{$informan->perusahaan}}@endif" placeholder="Example: PT. Jaya Abadi" required />
+                <label hidden>Company*</label>
+                <input type="text" name="perusahaan" class="form-control" value="@if(!is_null(old('perusahaan'))){{old('perusahaan')}}@elseif(isset($informan->perusahaan)){{$informan->perusahaan}}@endif" placeholder="Example: PT. Jaya Abadi" hidden />
             </div>
         </div>
         <div class="field">
             <div class="form-group">
-                <label>Company Email*</label>
-                <input type="email" name="email_perusahaan" class="form-control" value="@if(!is_null(old('email_perusahaan'))){{old('email_perusahaan')}}@elseif(isset($informan->email_perusahaan)){{$informan->email_perusahaan}}@endif" placeholder="Example: kontak@jayaabadi.com" required />
+                <label hidden>Company Email*</label>
+                <input type="email" name="email_perusahaan" class="form-control" value="@if(!is_null(old('email_perusahaan'))){{old('email_perusahaan')}}@elseif(isset($informan->email_perusahaan)){{$informan->email_perusahaan}}@endif" placeholder="Example: kontak@jayaabadi.com" hidden />
             </div>
         </div>
         <div class="field">
             <div class="form-group">
-                <label>Company Phone*</label>
-                <input type="text" name="telpon_perusahaan" class="form-control" value="@if(!is_null(old('telpon_perusahaan'))){{old('telpon_perusahaan')}}@elseif(isset($informan->telpon_perusahaan)){{$informan->telpon_perusahaan}}@endif" placeholder="+62" required />
+                <label hidden>Company Phone*</label>
+                <input type="text" name="telpon_perusahaan" class="form-control" value="@if(!is_null(old('telpon_perusahaan'))){{old('telpon_perusahaan')}}@elseif(isset($informan->telpon_perusahaan)){{$informan->telpon_perusahaan}}@endif" placeholder="+62" hidden />
             </div>
         </div>
 

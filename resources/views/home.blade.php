@@ -4,6 +4,11 @@
         <!-- navbar -->
         @if(Session::get('sukses')=="1")
         <script>swal({type: 'success',title: 'Your response has been recorded',showConfirmButton: false,timer: 1500})</script>
+        <script>
+        var timer = setTimeout(function() {
+            window.location='{{url('/home')}}'
+        }, 1550);
+        </script>
         {{Session::forget('sukses')}}
         @endif
         <nav class="navbar navbar-expand-lg navbar-dark home-nav">
