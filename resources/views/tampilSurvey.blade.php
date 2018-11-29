@@ -39,7 +39,7 @@
 </div>
 @endif
 <div class="wrapper">
-    <form class="form" method="post" action="{{url('kuisioner/'.Crypt::encrypt($row->id))}}">
+    <form class="form" method="post" action="{{url('kuisioner/'.Crypt::encrypt($id))}}">
         {{ csrf_field() }}
         <h2 class="text-center pt-5 pb-0 mb-1" hidden>Your Personal Info</h2> {{-- {{dd($informan)}} --}}
         <!-- <hr class="under-job-title mb-5"> -->
@@ -102,7 +102,7 @@
               <strong><label>{{$pertanyaan->pertanyaan}}*</label></strong>
               @foreach($pertanyaan->opsi->opsi_list as $opsi)
               <div class='radio'>
-                  <input type="radio" id='{{$pertanyaan->id . $opsi->id}}' name="{{'pertanyaan'.$pertanyaan->id}}" value="{{$opsi->id}}" {{old( 'pertanyaan'.$pertanyaan->id)==$opsi->id?'checked='.'"'.'checked'.'"' : ''}} required />
+                  <input type="radio" id='{{$pertanyaan->id . $opsi->id}}' required name="{{'pertanyaan'.$pertanyaan->id}}" value="{{$opsi->id}}" {{old( 'pertanyaan'.$pertanyaan->id)==$opsi->id?'checked='.'"'.'checked'.'"' : ''}} />
                   <label for="{{$pertanyaan->id . $opsi->id}}">
                       {{$opsi->nama_list}}
                   </label>

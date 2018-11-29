@@ -141,7 +141,8 @@ class HomeController extends Controller
       $data['active-tab']="result";
       
       //mengambil session registeras
-      $aspekList = Aspek::paginate(5);  
+      $aspekList = Aspek::select('id','topik','deskripsi')->paginate(5);
+      
       // $id=Aspek::find($id);
       return view('daftarHasilSurvey',compact('aspekList'),$data);
     }
@@ -236,10 +237,7 @@ class HomeController extends Controller
 
       $data['title'] = "Survey List - Diponegoro Research Center";
       $data['active'] = "listIsiSurvey";
-      
-      //mengambil session registeras
-      $registeras = Auth::user()->registeras;
-      $aspekList = Aspek::paginate(5);   
+      $aspekList = Aspek::select('id','topik','deskripsi')->paginate(5);
       return view('daftarIsiSurvey',compact('aspekList'),$data);
     }
 
