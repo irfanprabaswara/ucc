@@ -8,39 +8,56 @@
 	class AdminRespondenModuleController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
-	    	# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->table 			   = "tbl_responden";	        
-			$this->title_field         = "id";
-			$this->limit               = 20;
-			$this->orderby             = "id,desc";
-			$this->show_numbering      = FALSE;
-			$this->global_privilege    = FALSE;	        
-			$this->button_table_action = TRUE;   
-			$this->button_action_style = "button_icon";     
-			$this->button_add          = TRUE;
-			$this->button_delete       = TRUE;
-			$this->button_edit         = TRUE;
-			$this->button_detail       = TRUE;
-			$this->button_show         = TRUE;
-			$this->button_filter       = TRUE;        
-			$this->button_export       = FALSE;	        
-			$this->button_import       = FALSE;
-			$this->button_bulk_action  = TRUE;	
+
+			# START CONFIGURATION DO NOT REMOVE THIS LINE
+			$this->title_field = "id";
+			$this->limit = "10";
+			$this->orderby = "id,desc";
+			$this->global_privilege = false;
+			$this->button_table_action = true;
+			$this->button_bulk_action = true;
+			$this->button_action_style = "button_icon";
+			$this->button_add = true;
+			$this->button_edit = true;
+			$this->button_delete = true;
+			$this->button_detail = true;
+			$this->button_show = true;
+			$this->button_filter = true;
+			$this->button_import = true;
+			$this->button_export = true;
+			$this->table = "tbl_respon_list";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
+
+			//QUERY BUILDER
+			// $responden = DB::table('tbl_respon')
+		 //    ->join('users', 'users.id', '=', 'tbl_respon.id_informan')
+		 //    ->join('tbl_respon_list', 'tbl_respon_list.id_respon', '=', 'tbl_respon.id')
+		 //    ->get();
+
+		 //    dd($responden);
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Name","name"=>"name"];
-			$this->col[] = ["label"=>"Gender","name"=>"gender"];
+			// $this->col[] = ["label"=>"Name","name"=>"name"];
+			// $this->col[] = ["label"=>"Gender","name"=>"gender"];
+			// $this->col[] = ["label"=>"Id","name"=>"id_informan","join"=>"users,name"];
+			$this->col[] = ["label"=>"Pertanyaan","name"=>"id_pertanyaan","join"=>"tbl_pertanyaan,pertanyaan"];
+			$this->col[] = ["label"=>"Id Informan","name"=>"id_respon","join"=>"tbl_respon,id_informan"];
+			$this->col[] = ["label"=>"Id Respon List","name"=>"id"];
+			// $this->col[] = ["label"=>"Pendidikan","name"=>"id_informan","join"=>"users,education"];
+			// $this->col[] = ["label"=>"Institusi","name"=>"id_informan","join"=>"users,institution"];
+			// $this->col[] = ["label"=>"Departement","name"=>"id_informan","join"=>"users,department"];
+			// $this->col[] = ["label"=>"Alamat","name"=>"id_informan","join"=>"users,address"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Name','validation'=>'required','width'=>'col-sm-9'];
+			// $this->form[] = ['label'=>'Name','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
+			//$this->form[] = ['label'=>'Name','validation'=>'required','width'=>'col-sm-9'];
 			# OLD END FORM
 
 			/* 
@@ -228,6 +245,12 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
+	     //    $responden = DB::table('tbl_respon')
+		    // ->join('users', 'users.id', '=', 'tbl_respon.id_informan')
+		    // ->join('tbl_respon_list', 'tbl_respon_list.id_respon', '=', 'tbl_respon.id')
+		    // ->get();
+
+		    // dd($responden);
 	            
 	    }
 
@@ -314,9 +337,6 @@
 
 	    }
 
-
-
 	    //By the way, you can still create your own method in here... :) 
-
 
 	}
