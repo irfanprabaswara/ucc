@@ -4,6 +4,7 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use App\Aspek;
 
 	class AdminTblAspekController extends \crocodicstudio\crudbooster\controllers\CBController {
 
@@ -270,7 +271,17 @@
 	    | 
 	    */
 	    public function hook_after_add($id) {        
-	        //Your code here
+			$aspek = Aspek::find($id);
+			$enroll=$aspek->enrollkey;
+			if($enroll != 0 && !(is_null($enroll))){
+				$aspek->locked ="yes";
+				// dd($aspek);	
+				$aspek->save();
+			} else{
+				$aspek->enrollkey=0;
+				$aspek->save();
+			}
+			
 
 	    }
 
@@ -295,7 +306,16 @@
 	    | 
 	    */
 	    public function hook_after_edit($id) {
-	        //Your code here 
+	        $aspek = Aspek::find($id);
+			$enroll=$aspek->enrollkey;
+			if($enroll != 0 && !(is_null($enroll))){
+				$aspek->locked ="yes";
+				// dd($aspek);	
+				$aspek->save();
+			} else{
+				$aspek->enrollkey=0;
+				$aspek->save();
+			}
 
 	    }
 

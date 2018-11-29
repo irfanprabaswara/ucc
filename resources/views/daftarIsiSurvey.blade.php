@@ -24,8 +24,13 @@
                             <table>
                                     <tr>
                                         <td><strong><h5 class="card-title" style="color:#56A8FF !important">{{$row->topik}}</h5></strong></td>
-                                        <td><i style="width:100%" class="fas fa-key mb-3 pt-2"></i></td>
-                                        <input hidden type="text" value="{{$row->enrollkey}}">
+                                        <input hidden type="text" id="locked{{$row->id}}" value="{{$row->locked}}">
+                                        <td><i id="kunciqu{{$row->id}}" style="width:100%" class="fas fa-key mb-3 pt-2"></i></td>
+                                        <script>
+                                            $(document).ready(function() {
+                                                if($('#locked{{$row->id}}').val()=="no"){$('#kunciqu{{$row->id}}').hide()}
+                                            });
+                                        </script>
                                     </tr>                                
                                 </table>
                                 <p class="card-text text-justify">{{$row->deskripsi}}</p>
@@ -53,6 +58,12 @@
                     </div>
                         <button type="submit" class="btn btn-primary">Enter</button>
                     </form>
+                    <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <strong>Halo member DIRECT!</strong> Enroll key untuk survey tanpa tanda kunci adalah angka 0 (nol).
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -65,7 +76,7 @@
                 <div class="col-12 col-md-8 my-3">
                 {!! $aspekList->links('vendor.pagination.bootstrap-4') !!}
             </div>
-            
+            </div>
             
         
 </div>
@@ -86,7 +97,6 @@
         </div>
     </div>
     </div> -->
-    <script>
     
-    </script>
 @endsection
+

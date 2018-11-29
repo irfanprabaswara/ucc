@@ -237,7 +237,7 @@ class HomeController extends Controller
 
       $data['title'] = "Survey List - Diponegoro Research Center";
       $data['active'] = "listIsiSurvey";
-      $aspekList = Aspek::select('id','topik','deskripsi')->paginate(5);
+      $aspekList = Aspek::select('id','topik','deskripsi','locked')->paginate(5);
       return view('daftarIsiSurvey',compact('aspekList'),$data);
     }
 
