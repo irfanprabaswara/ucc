@@ -353,6 +353,7 @@ class HomeController extends Controller
         // }
 
         // Insert new respon
+        dd($request);
         $respon = new Respon();
         $respon->id_informan = $userid;
         try {
