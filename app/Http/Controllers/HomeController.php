@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Route;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Encryption\DecryptException;
 use App\Posting;
 use App\Slider;
 use App\Category;
@@ -151,7 +152,10 @@ class HomeController extends Controller
     {
       // if(!$this->showResponses->is_show)
       //     return redirect('/');
-      $id = Crypt::decrypt($idenc);
+      try{$id = Crypt::decrypt($idenc);}
+        catch(DecryptException $e){
+            return view('missing');
+        }
         // Meta variable
         $meta['description'] = 'Whats companys said about Undip World Class University\'s alumni';
         $meta['author'] = 'Undip World Class University';
@@ -243,7 +247,10 @@ class HomeController extends Controller
 
     public function tampilSurvey(Request $request, $idenc, $informan=null)
     {
-        $id = Crypt::decrypt($idenc);
+        try{$id = Crypt::decrypt($idenc);}
+        catch(DecryptException $e){
+            return view('missing');
+        }
         $aspek= Aspek::where('id',$id)->get();
         foreach ($aspek as $aspekfor){
             $enrollkey=$aspekfor->enrollkey;
