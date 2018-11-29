@@ -31,7 +31,6 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Id","name"=>"id"];
-			$this->col[] = ["label"=>"Tujuan","name"=>"tujuan"];
 			$this->col[] = ["label"=>"Topik","name"=>"topik"];
 			$this->col[] = ["label"=>"Enroll key","name"=>"enrollkey"];
 			$this->col[] = ["label"=>"Deskripsi","name"=>"deskripsi"];
@@ -39,7 +38,6 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Tujuan','name'=>'tujuan','type'=>'radio','width'=>'col-sm-10','dataenum'=>'Student;Company'];
 			$this->form[] = ['label'=>'Topik','name'=>'topik','type'=>'text','validation'=>'required|min:1|max:25','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Deskripsi','name'=>'deskripsi','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Enroll key','name'=>'enrollkey','type'=>'text','width'=>'col-sm-9'];

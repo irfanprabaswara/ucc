@@ -140,8 +140,7 @@ class HomeController extends Controller
       $data['active-tab']="result";
       
       //mengambil session registeras
-      $registeras = Auth::user()->registeras;
-      $aspekList = Aspek::where('tujuan','!=',$registeras)->get();  
+      $aspekList = Aspek::paginate(5);  
       // $id=Aspek::find($id);
       return view('daftarHasilSurvey',compact('aspekList'),$data);
     }
@@ -239,13 +238,19 @@ class HomeController extends Controller
       
       //mengambil session registeras
       $registeras = Auth::user()->registeras;
-      $aspekList = Aspek::where('tujuan',$registeras)->get();  
+      $aspekList = Aspek::paginate(5);   
       return view('daftarIsiSurvey',compact('aspekList'),$data);
     }
 
     public function tampilSurvey(Request $request, $idenc, $informan=null)
     {
         $id = Crypt::decrypt($idenc);
+        $aspek= Aspek::where('id',$id)->get();
+        foreach ($aspek as $aspekfor){
+            $enrollkey=$aspekfor->enrollkey;
+        }
+        $enrollinput = $request->enroll;
+        
       // Meta variable
         $meta['description'] = 'Diponegoro Research Center';
         $meta['author'] = 'Administrator';
@@ -273,7 +278,14 @@ class HomeController extends Controller
         if(count($kuisioner)==0){
             return view('missing');
         }
-        return view('tampilSurvey', $data);
+        if($enrollinput == $enrollkey){
+            return view('tampilSurvey', $data);
+        }
+        else{
+            session(['sukses'=>'1']);
+            return redirect('/listIsiSurvey');
+        }
+        
     }
 
     public function submitKuisioner(Request $request, $idenc){
