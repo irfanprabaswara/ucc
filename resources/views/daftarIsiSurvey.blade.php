@@ -21,7 +21,13 @@
                 <div class="col-12 col-md-8 my-3">
                     <div class="card animated fadeInRight">
                             <div class="card-body">
-                                <strong><h5 class="card-title" style="color:#56A8FF !important">{{$row->topik}}</h5></strong>
+                            <table>
+                                    <tr>
+                                        <td><strong><h5 class="card-title" style="color:#56A8FF !important">{{$row->topik}}</h5></strong></td>
+                                        <td><i style="width:100%" class="fas fa-key mb-3 pt-2"></i></td>
+                                        <input hidden type="text" value="{{$row->enrollkey}}">
+                                    </tr>                                
+                                </table>
                                 <p class="card-text text-justify">{{$row->deskripsi}}</p>
                                 
                                 <!-- <a href="{{url('tampilSurvey/'.Crypt::encrypt($row->id))}}" class="btn btn-primary">Isi Survey</a> -->
@@ -80,4 +86,7 @@
         </div>
     </div>
     </div> -->
+    <script>
+    
+    </script>
 @endsection
