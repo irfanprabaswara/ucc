@@ -1,12 +1,10 @@
-@extends('layouts.templatedirect')
 <html>
     <head>
         <title>DIRECT Agreement</title>
+        <link id="theme-style" rel="stylesheet" href="{{asset('plugins/bootstrap4/css/bootstrap.min.css')}}">
     </head>
     <body>
-        @section('header')
-        @endsection'
-        <div class="container">
+        <div class="mt-4 container">
             <div class="row">
                 <div class="col-12">
                     <h1 class="text-center">Diponegoro Research Center Agrement</h1>
@@ -47,9 +45,10 @@
             </div>
         </div>
         
-        
-        
-        @section('footer')
-        @endsection
+        <script src="{{asset('plugins/jquery/jquery.min.js')}}"> </script>
+         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}" ></script>
     </body>
 </html>

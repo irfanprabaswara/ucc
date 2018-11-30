@@ -33,8 +33,8 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Id","name"=>"id"];
 			$this->col[] = ["label"=>"Topik","name"=>"topik"];
-			$this->col[] = ["label"=>"Enroll key","name"=>"enrollkey"];
 			$this->col[] = ["label"=>"Deskripsi","name"=>"deskripsi"];
+			$this->col[] = ["label"=>"Enroll key","name"=>"enrollkey"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -273,12 +273,13 @@
 	    public function hook_after_add($id) {        
 			$aspek = Aspek::find($id);
 			$enroll=$aspek->enrollkey;
-			if($enroll != 0 && !(is_null($enroll))){
+			if(($enroll != 0) && !(is_null($enroll))){
 				$aspek->locked ="yes";
 				// dd($aspek);	
 				$aspek->save();
 			} else{
 				$aspek->enrollkey=0;
+				$aspek->locked = "no";
 				$aspek->save();
 			}
 			
@@ -308,12 +309,13 @@
 	    public function hook_after_edit($id) {
 	        $aspek = Aspek::find($id);
 			$enroll=$aspek->enrollkey;
-			if($enroll != 0 && !(is_null($enroll))){
+			if(($enroll != 0) && !(is_null($enroll))){
 				$aspek->locked ="yes";
 				// dd($aspek);	
 				$aspek->save();
 			} else{
 				$aspek->enrollkey=0;
+				$aspek->locked = "no";
 				$aspek->save();
 			}
 
